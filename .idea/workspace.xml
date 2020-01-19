@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6845c147-55e6-415a-9a0f-2d8345ad9b1a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/fastjson_1_2_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/log4j_1_2_17.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QExchangeCore.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/GlobalConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/QExchangeHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/coder/CoderFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/coder/IQExchangeCoder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/coder/JSONCoder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/Datagram.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/IOSourceFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/IOSourceParameterStore.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/IQExchangeIOSource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/TCPIOSource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/CryptoModuleFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/CryptoParameter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/CryptoParametersStore.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/IQExchangeCryptoModule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/IncompleteCryptoParameterException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/impl/NoneModule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/impl/RSAModule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/utils/RSAKeySet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/utils/RSAUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/utils/SHA256Utils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/test/CryptoModuleTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/log4j.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="H:\JavaWork\QExchangeCore\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1WZUUCrtBaSdslljZzj7XFFZZCC" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/utils" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="H:\JavaWork\QExchangeCore\src\com\qzero\exchange\core\io\crypto\utils" />
+      <recent name="H:\JavaWork\QExchangeCore\libs" />
+      <recent name="H:\JavaWork\QExchangeCore\src" />
+    </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6845c147-55e6-415a-9a0f-2d8345ad9b1a" name="Default Changelist" comment="" />
+      <created>1579356623625</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1579356623625</updated>
+      <workItem from="1579356628814" duration="482000" />
+      <workItem from="1579357144336" duration="3799000" />
+      <workItem from="1579395312090" duration="852000" />
+      <workItem from="1579396773330" duration="3039000" />
+      <workItem from="1579418111204" duration="2342000" />
+      <workItem from="1579423869480" duration="5307000" />
+      <workItem from="1579437276181" duration="5031000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="765" y="239" key="#com.intellij.ide.util.MemberChooser" timestamp="1579440741268">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="239" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1579440741268" />
+    <state x="740" y="264" key="FileChooserDialogImpl" timestamp="1579357908989">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="264" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1579357908989" />
+    <state x="658" y="421" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1579399828450">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="658" y="421" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040@0.0.1920.1040" timestamp="1579399828450" />
+    <state x="657" y="322" key="git4idea.merge.GitPullDialog" timestamp="1579357976098">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="657" y="322" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579357976098" />
+  </component>
+</project>
