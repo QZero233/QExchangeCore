@@ -1,7 +1,6 @@
 package com.qzero.exchange.core.io;
 
 import com.alibaba.fastjson.JSON;
-import com.qzero.exchange.core.GlobalConfiguration;
 import com.qzero.exchange.core.io.crypto.CryptoParameter;
 import com.qzero.exchange.core.io.crypto.IQExchangeCryptoModule;
 import org.apache.log4j.Logger;
@@ -10,7 +9,6 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -39,31 +37,36 @@ public class TCPIOSource implements IQExchangeIOSource {
 
     public static final String PARAMETER_TCP_REMOTE_IP = "tcpRemoteIp";
 
-    /**
-     * Your role,server or client
-     */
-    public static final String PARAMETER_TCP_ROLE = "tcpRole";
-
     public static final String PARAMETER_TCP_PORT = "tcpPort";
 
-    public static final String ROLE_SERVER = "server";
-    public static final String ROLE_CLIENT = "client";
-
     private Socket socket;
-    private boolean isServer = false;
+    private boolean isServer;
 
     private InputStream is;
     private OutputStream os;
 
-    private IQExchangeCryptoModule cryptoModule = null;
+    private String remoteIp;
+    private int port;
 
-    public TCPIOSource(IQExchangeCryptoModule cryptoModule) {
+    private String role;
+
+    private boolean initStage=true;
+
+    private IQExchangeCryptoModule cryptoModule;
+
+    public TCPIOSource(String remoteIp, int port, IQExchangeCryptoModule cryptoModule) {
+        this.remoteIp = remoteIp;
+        this.port = port;
         this.cryptoModule = cryptoModule;
+        isServer=false;
+        initSource();
     }
 
     public TCPIOSource(Socket socket, IQExchangeCryptoModule cryptoModule) {
         this.socket = socket;
         this.cryptoModule = cryptoModule;
+        isServer=true;
+        initSource();
     }
 
     private Datagram decodeDatagram(InputStream is) {
@@ -76,12 +79,13 @@ public class TCPIOSource implements IQExchangeIOSource {
 
             byte[] actionStringBuf = readDataFromInputStream(is, actionLength);
             byte[] timeBuf = readDataFromInputStream(is, 8);
+
             byte[] content = readDataFromInputStream(is, contentLength);
 
             Datagram datagram = new Datagram(new String(actionStringBuf), byteArrayToLong(timeBuf), content);
             return datagram;
         } catch (Exception e) {
-            log.error("Error when decoding datagram");
+            log.error("Error when decoding datagram",e);
             return null;
         }
     }
@@ -93,7 +97,7 @@ public class TCPIOSource implements IQExchangeIOSource {
             byte[] actionStringBuf = datagram.getAction().getBytes();
             byte[] content = datagram.getContent();
 
-            int length = 4 + 4 + actionStringBuf.length + 8 + content.length;
+            int length = 4 + 4 + 4 + actionStringBuf.length + 8 + content.length;
             outputStream.write(intToByteArray(length));
             outputStream.write(intToByteArray(actionStringBuf.length));
             outputStream.write(intToByteArray(content.length));
@@ -121,17 +125,24 @@ public class TCPIOSource implements IQExchangeIOSource {
 
             byte[] intBuf = readDataFromInputStream(is, 4);
             int length = byteArrayToInt(intBuf);
+            length-=4;
 
             byte[] buf = readDataFromInputStream(is, length);
 
-            byte[] decrypted = cryptoModule.decrypt(buf);
-            if (decrypted == null)
-                decrypted = buf;
+            if(!initStage){
+                byte[] decrypted = cryptoModule.decrypt(buf);
+                if (decrypted == null)
+                    decrypted = buf;
+                return decodeDatagram(new ByteArrayInputStream(decrypted,4,decrypted.length-4));
+            }else{
+                return decodeDatagram(new ByteArrayInputStream(buf));
+            }
 
-            return decodeDatagram(new ByteArrayInputStream(decrypted));
+
+
 
         } catch (Exception e) {
-            log.error("Error when reading datagram");
+            log.error(role+" Error when reading datagram");
             return null;
         }
     }
@@ -150,12 +161,22 @@ public class TCPIOSource implements IQExchangeIOSource {
             if (encoded == null)
                 return false;
 
-            byte[] encrypted = cryptoModule.encrypt(encoded);
-            if (encrypted == null)
-                encrypted = encoded;
 
 
-            os.write(encrypted);
+            if(!initStage){
+                byte[] encrypted = cryptoModule.encrypt(encoded);
+                if (encrypted == null)
+                    encrypted = encoded;
+
+                os.write(intToByteArray(encrypted.length+4));
+                os.write(encrypted);
+            }else{
+                os.write(encoded);
+            }
+
+
+
+
             return true;
         } catch (Exception e) {
             log.error("Error when writing datagram " + datagram, e);
@@ -177,12 +198,8 @@ public class TCPIOSource implements IQExchangeIOSource {
 
     @Override
     public boolean initSource() {
-        byte[] role = IOSourceParameterStore.get(PARAMETER_TCP_ROLE);
-        if (role == null)
-            return false;
-
-        if (new String(role).equals(ROLE_SERVER))
-            isServer = true;
+        initStage=true;
+        role=isServer?"Server":"Client";
 
         /*
         Exchange crypto parameters:
@@ -192,15 +209,18 @@ public class TCPIOSource implements IQExchangeIOSource {
         When both have sent a datagram with action ACTION_CRYPTO_PARAMETER_OVER,which means crypto parameters exchange over
          */
         try {
-            int port = Integer.parseInt(new String(IOSourceParameterStore.get(PARAMETER_TCP_PORT)));
 
             if (!isServer) {
-                String remoteIp = new String(IOSourceParameterStore.get(PARAMETER_TCP_REMOTE_IP));
                 socket = new Socket(remoteIp, port);
             }
 
             if (isServer) {
-                sendRequest(cryptoModule.getNeededParametersList());
+                List<String> neededList = cryptoModule.getNeededParametersList();
+                if (neededList == null || neededList.isEmpty()){
+                    sendOverSignal();
+                }else{
+                    sendRequest(neededList);
+                }
             }
 
             int i = 0;
@@ -214,6 +234,7 @@ public class TCPIOSource implements IQExchangeIOSource {
                     if (cryptoParameterList == null)
                         continue;
 
+                    log.debug(role+":"+"Got crypto parameter\t"+cryptoParameterList);
                     for (CryptoParameter cryptoParameter : cryptoParameterList) {
                         cryptoModule.fillParameter(cryptoParameter.getName(), cryptoParameter.getParameter());
                     }
@@ -222,6 +243,7 @@ public class TCPIOSource implements IQExchangeIOSource {
                     if (requestList == null)
                         continue;
 
+                    log.debug(role+":"+"Got crypto parameter request\t"+requestList);
                     List<CryptoParameter> cryptoParameterList = new ArrayList<>();
                     for (String request : requestList) {
                         byte[] parameter = cryptoModule.getParameter(request);
@@ -242,6 +264,7 @@ public class TCPIOSource implements IQExchangeIOSource {
                     sendRequest(neededList);
 
                 } else if (action.equals(Datagram.ACTION_CRYPTO_PARAMETER_OVER)) {
+                    log.debug(role+":Remote exchange over");
                     remoteOver=true;
                     break;
                 } else {
@@ -298,6 +321,7 @@ public class TCPIOSource implements IQExchangeIOSource {
                         response(cryptoParameterList);
                     }else if (action.equals(Datagram.ACTION_CRYPTO_PARAMETER_OVER)) {
                         //Remote has nothing to ask,just break
+                        log.debug(role+":Remote exchange over");
                         break;
                     }else
                         continue;
@@ -309,6 +333,7 @@ public class TCPIOSource implements IQExchangeIOSource {
             }
 
 
+            initStage=false;
             return true;
         } catch (Exception e) {
             log.error("Error when init tcp io source", e);
@@ -318,23 +343,29 @@ public class TCPIOSource implements IQExchangeIOSource {
     }
 
     private void sendOverSignal(){
-        Datagram datagram=new Datagram(Datagram.ACTION_CRYPTO_PARAMETER_OVER,System.currentTimeMillis(),new byte[0]);
+        log.debug(role+":Exchange over");
+        Datagram datagram=new Datagram(Datagram.ACTION_CRYPTO_PARAMETER_OVER,System.currentTimeMillis(),new byte[]{0});
         writeDatagram(datagram);
     }
 
     private void sendRequest(List<String> requestList) {
+        log.debug(role+":Sent request\t"+requestList);
         String json = JSON.toJSONString(requestList);
         Datagram datagram = new Datagram(Datagram.ACTION_REQUEST_CRYPTO_PARAMETER, System.currentTimeMillis(), json.getBytes());
         writeDatagram(datagram);
     }
 
     private void response(List<CryptoParameter> parameterList) {
+        log.debug(role+":Response\t"+parameterList);
         String json = JSON.toJSONString(parameterList);
         Datagram datagram = new Datagram(Datagram.ACTION_SEND_CRYPTO_PARAMETER, System.currentTimeMillis(), json.getBytes());
         writeDatagram(datagram);
     }
 
     private byte[] readDataFromInputStream(InputStream is, int length) throws Exception {
+        if(length==0)
+            return new byte[0];
+
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream(length);
         byte[] buf = new byte[length];
         int len;

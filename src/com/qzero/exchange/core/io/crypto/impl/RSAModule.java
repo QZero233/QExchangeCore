@@ -1,6 +1,5 @@
 package com.qzero.exchange.core.io.crypto.impl;
 
-import com.qzero.exchange.core.io.crypto.CryptoParametersStore;
 import com.qzero.exchange.core.io.crypto.IQExchangeCryptoModule;
 import com.qzero.exchange.core.io.crypto.utils.RSAKeySet;
 import com.qzero.exchange.core.io.crypto.utils.RSAUtils;
@@ -10,11 +9,15 @@ import java.util.List;
 
 public class RSAModule implements IQExchangeCryptoModule {
 
-    public static final String PARAMETER_LOCAL_PUBLIC_KEY="localRSAPublicKey";
-    public static final String PARAMETER_LOCAL_PRIVATE_KEY="localRSAPrivateKey";
     public static final String PARAMETER_REMOTE_PUBLIC_KEY="remotePublicKey";
 
     private String remotePublicKey=null;
+
+    private RSAKeySet localKeySet;
+
+    public RSAModule(RSAKeySet localKeySet) {
+        this.localKeySet = localKeySet;
+    }
 
     @Override
     public byte[] encrypt(byte[] in) {
@@ -31,12 +34,8 @@ public class RSAModule implements IQExchangeCryptoModule {
 
     @Override
     public byte[] decrypt(byte[] in) {
-        byte[] privateKey=CryptoParametersStore.get(PARAMETER_LOCAL_PRIVATE_KEY);
-        if(privateKey==null)
-            return null;
-
         try {
-            RSAUtils rsaUtils=new RSAUtils(new RSAKeySet(null,new String(privateKey)));
+            RSAUtils rsaUtils=new RSAUtils(localKeySet);
             return rsaUtils.privateDecrypt(in);
         }catch (Exception e){
             return null;
@@ -47,8 +46,8 @@ public class RSAModule implements IQExchangeCryptoModule {
     public byte[] getParameter(String name) {
         switch (name){
             case PARAMETER_REMOTE_PUBLIC_KEY:
-                if(remotePublicKey!=null)
-                    return CryptoParametersStore.get(PARAMETER_LOCAL_PUBLIC_KEY);
+                if(localKeySet!=null)
+                    return localKeySet.getPub().getBytes();
                 else
                     return null;
         }

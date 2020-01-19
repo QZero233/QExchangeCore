@@ -1,5 +1,6 @@
 package com.qzero.exchange.core;
 
+import com.qzero.exchange.core.coder.CoderFactory;
 import com.qzero.exchange.core.coder.IQExchangeCoder;
 import com.qzero.exchange.core.io.Datagram;
 import com.qzero.exchange.core.io.IQExchangeIOSource;
@@ -8,6 +9,11 @@ public class QExchangeHelper {
 
     private IQExchangeIOSource ioSource;
     private IQExchangeCoder coder;
+
+    public QExchangeHelper(IQExchangeIOSource ioSource) {
+        this.ioSource = ioSource;
+        coder= CoderFactory.getCoder(CoderFactory.STANDARD_JSON_CODER);
+    }
 
     public QExchangeHelper(IQExchangeIOSource ioSource, IQExchangeCoder coder) {
         this.ioSource = ioSource;

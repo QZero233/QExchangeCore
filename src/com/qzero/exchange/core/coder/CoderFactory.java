@@ -9,6 +9,7 @@ public class CoderFactory {
 
         switch (name){
             case STANDARD_JSON_CODER:
+                coder= new JSONCoder();
                 break;
         }
 
