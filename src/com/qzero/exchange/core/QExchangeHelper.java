@@ -1,7 +1,7 @@
 package com.qzero.exchange.core;
 
-import com.qzero.exchange.core.coder.CoderFactory;
 import com.qzero.exchange.core.coder.IQExchangeCoder;
+import com.qzero.exchange.core.coder.JSONCoder;
 import com.qzero.exchange.core.io.Datagram;
 import com.qzero.exchange.core.io.IQExchangeIOSource;
 
@@ -12,7 +12,7 @@ public class QExchangeHelper {
 
     public QExchangeHelper(IQExchangeIOSource ioSource) {
         this.ioSource = ioSource;
-        coder= CoderFactory.getCoder(CoderFactory.STANDARD_JSON_CODER);
+        coder= new JSONCoder();
     }
 
     public QExchangeHelper(IQExchangeIOSource ioSource, IQExchangeCoder coder) {
@@ -39,11 +39,9 @@ public class QExchangeHelper {
 
     /**
      * Read an object from io source
-     * @param clazz The class of the object
-     * @param <T> The type of the object
      * @return The object,if failed,return null
      */
-    public<T> T readObject(Class<T> clazz){
+    public Object readObject(){
         if(ioSource==null || ioSource.getSourceStatus()!= IQExchangeIOSource.IOSourceStatus.STATUS_OPEN)
             return null;
 
@@ -52,7 +50,7 @@ public class QExchangeHelper {
             return null;
 
         byte[] buf=datagram.getContent();
-        T bean=coder.decode(buf,clazz);
+        Object bean=coder.decode(buf);
         return bean;
     }
 

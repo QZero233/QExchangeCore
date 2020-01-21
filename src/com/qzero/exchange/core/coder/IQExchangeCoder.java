@@ -8,11 +8,9 @@ public interface IQExchangeCoder {
     /**
      * Decode a bin data into object
      * @param in The bin data
-     * @param clazz The class of the object
-     * @param <T> The type of the object
      * @return The object,if action failed,it'll return null
      */
-    <T>T decode(byte[] in,Class<T> clazz);
+    Object decode(byte[] in);
 
     /**
      * Encode an object into bin data
