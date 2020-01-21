@@ -1,34 +1,26 @@
 package com.qzero.exchange.core.io.crypto.utils;
 
-import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class SHA256Utils {
-    /**
-     * 获取sha256值并以十六进制编码返回
-     *
-     * @param str 原文
-     * @return sha256密文
-     */
-    public static String getSHA256InHex(String str) {
+
+    public static byte[] getSHA256(byte[] buf) {
         MessageDigest messageDigest;
         String encodeStr = "";
         try {
             messageDigest = MessageDigest.getInstance("SHA-256");
-            messageDigest.update(str.getBytes("UTF-8"));
-            encodeStr = byte2Hex(messageDigest.digest());
+            messageDigest.update(buf);
+            return messageDigest.digest();
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
         }
-        return encodeStr;
+        return null;
     }
 
 
 
-    private static String byte2Hex(byte[] bytes) {
+    public static String byte2Hex(byte[] bytes) {
         StringBuffer stringBuffer = new StringBuffer();
         String temp;
         for (int i = 0; i < bytes.length; i++) {

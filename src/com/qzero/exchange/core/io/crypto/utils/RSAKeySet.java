@@ -1,38 +1,38 @@
 package com.qzero.exchange.core.io.crypto.utils;
 
 public class RSAKeySet {
-    private String pub;
-    private String pri;
+    private String publicKeyImPem;
+    private String privateKeyInPem;
 
     public RSAKeySet() {
     }
 
-    public RSAKeySet(String pub, String pri) {
-        this.pub = pub;
-        this.pri = pri;
+    public RSAKeySet(String publicKeyImPem, String privateKeyInPem) {
+        this.publicKeyImPem = publicKeyImPem;
+        this.privateKeyInPem = privateKeyInPem;
     }
 
-    public String getPub() {
-        return pub;
+    public String getPublicKeyImPem() {
+        return publicKeyImPem;
     }
 
-    public void setPub(String pub) {
-        this.pub = pub;
+    public void setPublicKeyImPem(String publicKeyImPem) {
+        this.publicKeyImPem = publicKeyImPem;
     }
 
-    public String getPri() {
-        return pri;
+    public String getPrivateKeyInPem() {
+        return privateKeyInPem;
     }
 
-    public void setPri(String pri) {
-        this.pri = pri;
+    public void setPrivateKeyInPem(String pri) {
+        this.privateKeyInPem = pri;
     }
 
     @Override
     public String toString() {
         return "RSAKeySet{" +
-                "pub='" + pub + '\'' +
-                ", pri='" + pri + '\'' +
+                "publicKeyImPem='" + publicKeyImPem + '\'' +
+                ", privateKeyInPem='" + privateKeyInPem + '\'' +
                 '}';
     }
 }

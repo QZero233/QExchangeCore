@@ -5,10 +5,7 @@ import org.apache.log4j.Logger;
 import javax.crypto.Cipher;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.security.KeyFactory;
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.SecureRandom;
+import java.security.*;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.security.spec.PKCS8EncodedKeySpec;
@@ -25,46 +22,28 @@ public class RSAUtils {
 
     private static final Logger log=Logger.getLogger(RSAUtils.class);
 
-    private KeyFactory keyFactory;
-    private RSAPublicKey publicKey = null;
-    private RSAPrivateKey privateKey = null;
-    private RSAKeySet keySet;
-
-    public RSAUtils(){
+    public static PublicKey loadPublicKey(String publicKeyInPem){
         try {
-            keyFactory = KeyFactory.getInstance(RSA);
+            KeyFactory keyFactory = KeyFactory.getInstance(RSA);
+            X509EncodedKeySpec x509EncodedKeySpec = new X509EncodedKeySpec(Base64.getDecoder().decode(publicKeyInPem));
+            PublicKey publicKey =  keyFactory.generatePublic(x509EncodedKeySpec);
+            return publicKey;
         }catch (Exception e){
-            log.error("初始化RSAUtils对象时失败",e);
+            log.error("Error when loading public key with following key\n"+publicKeyInPem,e);
+            return null;
         }
     }
 
-    public RSAUtils(RSAKeySet keySet){
-        this();
-        loadKeySet(keySet);
-    }
-
-    public void loadKeySet(RSAKeySet keySet){
-        this.keySet=keySet;
-        if(keySet==null)
-            return;
-
-        try{
-            if(keySet.getPub()!=null && !keySet.getPub().equals("")){
-                X509EncodedKeySpec x509EncodedKeySpec = new X509EncodedKeySpec(Base64.getDecoder().decode(keySet.getPub()));
-                publicKey = (RSAPublicKey) keyFactory.generatePublic(x509EncodedKeySpec);
-            }
-            if(keySet.getPri()!=null && !keySet.getPri().equals("")){
-                PKCS8EncodedKeySpec pKCS8EncodedKeySpec = new PKCS8EncodedKeySpec(Base64.getDecoder().decode(keySet.getPri()));
-                privateKey = (RSAPrivateKey) keyFactory.generatePrivate(pKCS8EncodedKeySpec);
-            }
+    public static PrivateKey loadPrivateKey(String privateKeyInPem){
+        try {
+            KeyFactory keyFactory = KeyFactory.getInstance(RSA);
+            PKCS8EncodedKeySpec pKCS8EncodedKeySpec = new PKCS8EncodedKeySpec(Base64.getDecoder().decode(privateKeyInPem));
+            PrivateKey privateKey =  keyFactory.generatePrivate(pKCS8EncodedKeySpec);
+            return privateKey;
         }catch (Exception e){
-            log.error("装载密钥对时错误",e);
+            log.error("Error when loading private key with following key\n"+privateKeyInPem,e);
+            return null;
         }
-
-    }
-
-    public RSAKeySet getKeySet(){
-        return keySet;
     }
 
     public static RSAKeySet genRSAKeySet(){
@@ -84,66 +63,30 @@ public class RSAUtils {
 
     }
 
-    /**
-     * 公钥加密过程, 明文长度小于 (公钥长度 / 8) - 11
-     *
-     * @param clearText 明文数据
-     * @return 密文
-     * @throws Exception 加密过程中的异常信息
-     */
-    public byte[] publicEncryptMini(byte[] clearText) throws Exception {
+    private static byte[] publicEncryptMini(byte[] clearText,String publicKeyInPem) throws Exception {
         Cipher cipher = Cipher.getInstance(RSA);
-
-        cipher.init(Cipher.ENCRYPT_MODE, publicKey);
-
+        cipher.init(Cipher.ENCRYPT_MODE,loadPublicKey(publicKeyInPem));
         byte[] output = cipher.doFinal(clearText);
-
         return output;
     }
 
-    /**
-     * 私钥加密过程, 明文长度小于 (私钥长度 / 8) - 11
-     *
-     * @param clearText 明文数据
-     * @return 密文，base64编码
-     * @throws Exception 加密过程中的异常信息
-     */
-    public byte[] privateEncryptMini(byte[] clearText) throws Exception {
+    private static byte[] privateEncryptMini(byte[] clearText,String privateKeyInPem) throws Exception {
         Cipher cipher = Cipher.getInstance(RSA);
-
-        cipher.init(Cipher.ENCRYPT_MODE, privateKey);
-
+        cipher.init(Cipher.ENCRYPT_MODE, loadPrivateKey(privateKeyInPem));
         byte[] output = cipher.doFinal(clearText);
-
         return output;
-
-
     }
 
-    /**
-     * 私钥解密过程
-     *
-     * @param cipherText 密文
-     * @return 明文
-     * @throws Exception
-     */
-    public byte[] privateDecryptMini(byte[] cipherText) throws Exception {
+    private static byte[] privateDecryptMini(byte[] cipherText,String privateKeyInPem) throws Exception {
         Cipher cipher = Cipher.getInstance(RSA);
-        cipher.init(Cipher.DECRYPT_MODE, privateKey);
+        cipher.init(Cipher.DECRYPT_MODE, loadPrivateKey(privateKeyInPem));
         byte[] output = cipher.doFinal(cipherText);
         return output;
     }
 
-    /**
-     * 公钥解密过程
-     *
-     * @param cipherText 密文
-     * @return 明文
-     * @throws Exception
-     */
-    public byte[] publicDecryptMini(byte[] cipherText) throws Exception {
+    private static byte[] publicDecryptMini(byte[] cipherText,String publicKeyInPem) throws Exception {
         Cipher cipher = Cipher.getInstance(RSA);
-        cipher.init(Cipher.DECRYPT_MODE, publicKey);
+        cipher.init(Cipher.DECRYPT_MODE, loadPublicKey(publicKeyInPem));
         byte[] output = cipher.doFinal(cipherText);
         return output;
     }
@@ -155,7 +98,7 @@ public class RSAUtils {
      * @return 密文
      * @throws Exception 加密过程中的异常信息
      */
-    public byte[] publicEncrypt(byte[] clearText) throws Exception {
+    public static byte[] publicEncrypt(byte[] clearText,String publicKeyInPem) throws Exception {
         ByteArrayOutputStream outputStream=new ByteArrayOutputStream();
 
         byte[] buf=clearText;
@@ -169,7 +112,7 @@ public class RSAUtils {
             byte[] tmpBuf=new byte[endIndex-currentIndex];
             inputStream.read(tmpBuf);
 
-            outputStream.write(publicEncryptMini(tmpBuf));
+            outputStream.write(publicEncryptMini(tmpBuf,publicKeyInPem));
             currentIndex += CLEAR_MAX_SIZE;
         }
         return outputStream.toByteArray();
@@ -182,7 +125,7 @@ public class RSAUtils {
      * @return 密文
      * @throws Exception 加密过程中的异常信息
      */
-    public byte[] privateEncrypt(byte[] clearText) throws Exception {
+    public static byte[] privateEncrypt(byte[] clearText,String privateKeyInPem) throws Exception {
         ByteArrayOutputStream outputStream=new ByteArrayOutputStream();
 
         byte[] buf=clearText;
@@ -196,7 +139,7 @@ public class RSAUtils {
             byte[] tmpBuf=new byte[endIndex-currentIndex];
             inputStream.read(tmpBuf);
 
-            outputStream.write(privateEncryptMini(tmpBuf));
+            outputStream.write(privateEncryptMini(tmpBuf,privateKeyInPem));
             currentIndex += CLEAR_MAX_SIZE;
         }
         return outputStream.toByteArray();
@@ -209,7 +152,7 @@ public class RSAUtils {
      * @return 明文
      * @throws Exception 解密过程中的异常信息
      */
-    public byte[] privateDecrypt(byte[] cipherText) throws Exception {
+    public static byte[] privateDecrypt(byte[] cipherText,String privateKeyInPem) throws Exception {
         byte[] buf=cipherText;
         ByteArrayInputStream inputStream=new ByteArrayInputStream(buf);
         ByteArrayOutputStream outputStream=new ByteArrayOutputStream();
@@ -222,7 +165,7 @@ public class RSAUtils {
             byte[] tmpBuf=new byte[endIndex-currentIndex];
             inputStream.read(tmpBuf);
 
-            outputStream.write(privateDecryptMini(tmpBuf));
+            outputStream.write(privateDecryptMini(tmpBuf,privateKeyInPem));
             currentIndex += CIPHER_MAX_SIZE;
         }
 
@@ -236,7 +179,7 @@ public class RSAUtils {
      * @return 明文
      * @throws Exception 解密过程中的异常信息
      */
-    public byte[] publicDecrypt(byte[] cipherText) throws Exception {
+    public static byte[] publicDecrypt(byte[] cipherText,String publicKeyInPem) throws Exception {
         byte[] buf=cipherText;
         ByteArrayInputStream inputStream=new ByteArrayInputStream(buf);
         ByteArrayOutputStream outputStream=new ByteArrayOutputStream();
@@ -249,11 +192,23 @@ public class RSAUtils {
             byte[] tmpBuf=new byte[endIndex-currentIndex];
             inputStream.read(tmpBuf);
 
-            outputStream.write(publicDecryptMini(tmpBuf));
+            outputStream.write(publicDecryptMini(tmpBuf,publicKeyInPem));
             currentIndex += CIPHER_MAX_SIZE;
         }
 
         return outputStream.toByteArray();
+    }
+
+    public static String getPurePublicKey(String origin){
+        origin="+"+origin+"+";
+        String[] tmp=origin.split("-----BEGIN RSA PUBLIC KEY-----");
+        if(tmp.length!=2)
+            return "";
+
+        tmp=tmp[1].split("-----END RSA PUBLIC KEY-----");
+        if(tmp.length!=2)
+            return "";
+        return tmp[0];
     }
 
 }

@@ -1,6 +1,8 @@
 package com.qzero.exchange.core.io.crypto.impl;
 
 import com.qzero.exchange.core.io.crypto.IQExchangeCryptoModule;
+import com.qzero.exchange.core.io.crypto.impl.ca.CAEntity;
+import com.qzero.exchange.core.io.crypto.impl.ca.CAUtils;
 import com.qzero.exchange.core.io.crypto.utils.RSAKeySet;
 import com.qzero.exchange.core.io.crypto.utils.RSAUtils;
 
@@ -10,14 +12,28 @@ import java.util.List;
 public class RSAModule implements IQExchangeCryptoModule {
 
     public static final String PARAMETER_REMOTE_PUBLIC_KEY="remotePublicKey";
+    public static final String PARAMETER_REMOTE_CA="remoteCA";
 
     private String remotePublicKey=null;
 
     private RSAKeySet localKeySet;
+    private boolean needCA;
+    private CAEntity localCA;
+    private String remoteIdentity;
 
-    public RSAModule(RSAKeySet localKeySet) {
+    private boolean isRemoteCAVerified=false;
+
+    public RSAModule(RSAKeySet localKeySet, CAEntity localCA, String remoteIdentity) {
         this.localKeySet = localKeySet;
+        this.localCA = localCA;
+        this.remoteIdentity = remoteIdentity;
+
+        if(remoteIdentity==null)
+            needCA=false;
+        else
+            needCA=true;
     }
+
 
     @Override
     public byte[] encrypt(byte[] in) {
@@ -25,8 +41,7 @@ public class RSAModule implements IQExchangeCryptoModule {
             return null;
 
         try {
-            RSAUtils rsaUtils=new RSAUtils(new RSAKeySet(remotePublicKey,null));
-            return rsaUtils.publicEncrypt(in);
+            return RSAUtils.publicEncrypt(in,remotePublicKey);
         }catch (Exception e){
             return null;
         }
@@ -35,9 +50,9 @@ public class RSAModule implements IQExchangeCryptoModule {
     @Override
     public byte[] decrypt(byte[] in) {
         try {
-            RSAUtils rsaUtils=new RSAUtils(localKeySet);
-            return rsaUtils.privateDecrypt(in);
+            return RSAUtils.privateDecrypt(in,localKeySet.getPrivateKeyInPem());
         }catch (Exception e){
+            e.printStackTrace();
             return null;
         }
     }
@@ -47,9 +62,13 @@ public class RSAModule implements IQExchangeCryptoModule {
         switch (name){
             case PARAMETER_REMOTE_PUBLIC_KEY:
                 if(localKeySet!=null)
-                    return localKeySet.getPub().getBytes();
+                    return localKeySet.getPublicKeyImPem().getBytes();
                 else
                     return null;
+            case PARAMETER_REMOTE_CA:
+                if(localCA==null)
+                    return null;
+                return CAUtils.CAEntityToBytes(localCA);
         }
 
         return null;
@@ -64,6 +83,13 @@ public class RSAModule implements IQExchangeCryptoModule {
             case PARAMETER_REMOTE_PUBLIC_KEY:
                 remotePublicKey=new String(parameter);
                 break;
+            case PARAMETER_REMOTE_CA:
+                CAEntity caEntity=CAUtils.bytesToCAEntity(parameter);
+                if(!CAUtils.verifyCA(caEntity,remoteIdentity,remotePublicKey))
+                    throw new IllegalArgumentException("Illegal CA");
+                else
+                    isRemoteCAVerified=true;
+
         }
     }
 
@@ -74,8 +100,8 @@ public class RSAModule implements IQExchangeCryptoModule {
         if(remotePublicKey==null)
             needed.add(PARAMETER_REMOTE_PUBLIC_KEY);
 
-        if(needed.isEmpty())
-            return null;
+        if(needCA && !isRemoteCAVerified)
+            needed.add(PARAMETER_REMOTE_CA);
 
         return needed;
     }

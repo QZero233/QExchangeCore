@@ -7,7 +7,7 @@ import com.qzero.exchange.core.io.crypto.CryptoModuleFactory;
 
 public class GlobalConfiguration {
 
-    private static final String DEFAULT_CODER_NAME= CoderFactory.STANDARD_JSON_CODER;
+    /*private static final String DEFAULT_CODER_NAME= CoderFactory.STANDARD_JSON_CODER;
     private static final String DEFAULT_CRYPTO_MODULE_NAME= CryptoModuleFactory.STANDARD_RSA_CRYPTO_MODULE;
     private static final String DEFAULT_IO_SOURCE_NAME= IOSourceFactory.STANDARD_TCP_IPP_IO;
 
@@ -16,5 +16,5 @@ public class GlobalConfiguration {
 
 
     public static void doDefault(){
-    }
+    }*/
 }

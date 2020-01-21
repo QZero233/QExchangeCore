@@ -35,10 +35,6 @@ public class TCPIOSource implements IQExchangeIOSource {
 
     private static final Logger log = Logger.getLogger(TCPIOSource.class);
 
-    public static final String PARAMETER_TCP_REMOTE_IP = "tcpRemoteIp";
-
-    public static final String PARAMETER_TCP_PORT = "tcpPort";
-
     private Socket socket;
     private boolean isServer;
 
@@ -337,9 +333,18 @@ public class TCPIOSource implements IQExchangeIOSource {
             return true;
         } catch (Exception e) {
             log.error("Error when init tcp io source", e);
+            disconnect();
             return false;
         }
 
+    }
+
+    private void disconnect(){
+        try {
+            socket.close();
+        }catch (Exception e){
+            log.error("Error when disconnecting connection",e);
+        }
     }
 
     private void sendOverSignal(){
