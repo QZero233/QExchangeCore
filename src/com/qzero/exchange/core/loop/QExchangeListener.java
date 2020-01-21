@@ -9,12 +9,13 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 public @interface QExchangeListener {
 
-    Class[] target();
+    Class[] targets();
 
     /**
      * The less one will be called first
+     * And it should be 1-10
      * @return
      */
-    int priority() default 1;
+    int priority() default GlobalMessageLoop.PRIORITY_USER_LEVEL;
 
 }
