@@ -368,7 +368,7 @@ public class TCPIOSource implements IQExchangeIOSource {
             StreamUtils.writeIntWith4Bytes(outputStream,actionStringBuf.length);
             StreamUtils.writeIntWith4Bytes(outputStream,content.length);
             outputStream.write(actionStringBuf);
-            StreamUtils.writeLongWith8Bytes(os,System.currentTimeMillis());
+            StreamUtils.writeLongWith8Bytes(outputStream,System.currentTimeMillis());
             outputStream.write(content);
 
             return outputStream.toByteArray();
@@ -381,7 +381,7 @@ public class TCPIOSource implements IQExchangeIOSource {
     /**
      * 手动断开连接
      */
-    private void disconnect() {
+    public void disconnect() {
         try {
             socket.close();
         } catch (Exception e) {
