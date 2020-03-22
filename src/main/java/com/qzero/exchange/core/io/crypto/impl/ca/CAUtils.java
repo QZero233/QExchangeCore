@@ -14,6 +14,12 @@ public class CAUtils {
 
     private static final Logger log= Logger.getLogger(CAUtils.class);
 
+    private RSAUtils rsaUtils;
+
+    public CAUtils(RSAUtils rsaUtils) {
+        this.rsaUtils = rsaUtils;
+    }
+
     public static byte[] CAContentToBytes(CAEntity caEntity){
         try {
             ByteArrayOutputStream outputStream=new ByteArrayOutputStream();
@@ -37,13 +43,13 @@ public class CAUtils {
     }
 
 
-    public static CAEntity doSignature(CAEntity caEntityWithContent, RSAKeySet signatureKeySet){
+    public CAEntity doSignature(CAEntity caEntityWithContent, RSAKeySet signatureKeySet){
 
         try {
             byte[] content=CAContentToBytes(caEntityWithContent);
             byte[] contentHash= SHA256Utils.getSHA256(content);
 
-            byte[] signature= RSAUtils.privateEncrypt(contentHash,signatureKeySet.getPrivateKeyInPem());
+            byte[] signature= rsaUtils.privateEncrypt(contentHash,signatureKeySet.getPrivateKeyInPem());
 
             caEntityWithContent.setSignature(signature);
             caEntityWithContent.setSignaturePublicKey(signatureKeySet.getPublicKeyImPem());
@@ -55,7 +61,7 @@ public class CAUtils {
         }
     }
 
-    public static boolean verifyCA(CAEntity caEntity, String remoteIdentify, String remotePublicKey){
+    public boolean verifyCA(CAEntity caEntity, String remoteIdentify, String remotePublicKey){
         //TODO FIRST VERIFY IF THE PUBLIC KEY IS TRUSTED
         try {
 
@@ -71,7 +77,7 @@ public class CAUtils {
 
             String signaturePublicKey=caEntity.getSignaturePublicKey();
             byte[] signature=caEntity.getSignature();
-            byte[] contentHashDecrypted= RSAUtils.publicDecrypt(signature,signaturePublicKey);
+            byte[] contentHashDecrypted= rsaUtils.publicDecrypt(signature,signaturePublicKey);
             if(contentHashDecrypted==null)
                 return false;
 

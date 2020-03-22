@@ -30,6 +30,7 @@ public class RSAModule implements IQExchangeCryptoModule {
     private boolean isRemoteCAVerified=false;
 
     private RSAUtils rsaUtils;
+    private CAUtils caUtils;
 
     public RSAModule(RSAKeySet localKeySet, CAEntity localCA, String remoteIdentity,String transformation) {
         this.localKeySet = localKeySet;
@@ -42,6 +43,7 @@ public class RSAModule implements IQExchangeCryptoModule {
             needCA=true;
 
         rsaUtils=new RSAUtils(transformation);
+        caUtils=new CAUtils(rsaUtils);
     }
 
 
@@ -95,7 +97,7 @@ public class RSAModule implements IQExchangeCryptoModule {
                 break;
             case PARAMETER_REMOTE_CA:
                 CAEntity caEntity= CAUtils.bytesToCAEntity(parameter);
-                if(!CAUtils.verifyCA(caEntity,remoteIdentity,remotePublicKey))
+                if(!caUtils.verifyCA(caEntity,remoteIdentity,remotePublicKey))
                     throw new IllegalArgumentException("Illegal CA");
                 else
                     isRemoteCAVerified=true;
