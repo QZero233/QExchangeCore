@@ -14,6 +14,9 @@ import java.util.List;
  */
 public class RSAModule implements IQExchangeCryptoModule {
 
+    public static final String TRANSFORMATION_SERVER=RSAUtils.RSA;
+    public static final String TRANSFORMATION_ANDROID="RSA/ECB/PKCS1Padding";
+
     public static final String PARAMETER_REMOTE_PUBLIC_KEY="remotePublicKey";
     public static final String PARAMETER_REMOTE_CA="remoteCA";
 
@@ -26,7 +29,9 @@ public class RSAModule implements IQExchangeCryptoModule {
 
     private boolean isRemoteCAVerified=false;
 
-    public RSAModule(RSAKeySet localKeySet, CAEntity localCA, String remoteIdentity) {
+    private RSAUtils rsaUtils;
+
+    public RSAModule(RSAKeySet localKeySet, CAEntity localCA, String remoteIdentity,String transformation) {
         this.localKeySet = localKeySet;
         this.localCA = localCA;
         this.remoteIdentity = remoteIdentity;
@@ -35,6 +40,8 @@ public class RSAModule implements IQExchangeCryptoModule {
             needCA=false;
         else
             needCA=true;
+
+        rsaUtils=new RSAUtils(transformation);
     }
 
 
@@ -44,7 +51,7 @@ public class RSAModule implements IQExchangeCryptoModule {
             return null;
 
         try {
-            return RSAUtils.publicEncrypt(in,remotePublicKey);
+            return rsaUtils.publicEncrypt(in,remotePublicKey);
         }catch (Exception e){
             return null;
         }
@@ -53,7 +60,7 @@ public class RSAModule implements IQExchangeCryptoModule {
     @Override
     public byte[] decrypt(byte[] in) {
         try {
-            return RSAUtils.privateDecrypt(in,localKeySet.getPrivateKeyInPem());
+            return rsaUtils.privateDecrypt(in,localKeySet.getPrivateKeyInPem());
         }catch (Exception e){
             e.printStackTrace();
             return null;

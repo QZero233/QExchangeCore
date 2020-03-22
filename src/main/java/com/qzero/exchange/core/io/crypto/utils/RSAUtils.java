@@ -14,6 +14,7 @@ import java.util.Base64;
 
 public class RSAUtils {
 
+    private String transformation;
 
     public static final String RSA = "RSA";
     public static final int KEY_SIZE = 2048;
@@ -22,7 +23,11 @@ public class RSAUtils {
 
     private static final Logger log= Logger.getLogger(RSAUtils.class);
 
-    public static PublicKey loadPublicKey(String publicKeyInPem){
+    public RSAUtils(String transformation) {
+        this.transformation = transformation;
+    }
+
+    private static PublicKey loadPublicKey(String publicKeyInPem){
         try {
             KeyFactory keyFactory = KeyFactory.getInstance(RSA);
             X509EncodedKeySpec x509EncodedKeySpec = new X509EncodedKeySpec(Base64.getDecoder().decode(publicKeyInPem));
@@ -34,7 +39,7 @@ public class RSAUtils {
         }
     }
 
-    public static PrivateKey loadPrivateKey(String privateKeyInPem){
+    private static PrivateKey loadPrivateKey(String privateKeyInPem){
         try {
             KeyFactory keyFactory = KeyFactory.getInstance(RSA);
             PKCS8EncodedKeySpec pKCS8EncodedKeySpec = new PKCS8EncodedKeySpec(Base64.getDecoder().decode(privateKeyInPem));
@@ -63,29 +68,29 @@ public class RSAUtils {
 
     }
 
-    private static byte[] publicEncryptMini(byte[] clearText,String publicKeyInPem) throws Exception {
-        Cipher cipher = Cipher.getInstance(RSA);
+    private byte[] publicEncryptMini(byte[] clearText,String publicKeyInPem) throws Exception {
+        Cipher cipher = Cipher.getInstance(transformation);
         cipher.init(Cipher.ENCRYPT_MODE,loadPublicKey(publicKeyInPem));
         byte[] output = cipher.doFinal(clearText);
         return output;
     }
 
-    private static byte[] privateEncryptMini(byte[] clearText,String privateKeyInPem) throws Exception {
-        Cipher cipher = Cipher.getInstance(RSA);
+    private byte[] privateEncryptMini(byte[] clearText,String privateKeyInPem) throws Exception {
+        Cipher cipher = Cipher.getInstance(transformation);
         cipher.init(Cipher.ENCRYPT_MODE, loadPrivateKey(privateKeyInPem));
         byte[] output = cipher.doFinal(clearText);
         return output;
     }
 
-    private static byte[] privateDecryptMini(byte[] cipherText,String privateKeyInPem) throws Exception {
-        Cipher cipher = Cipher.getInstance(RSA);
+    private byte[] privateDecryptMini(byte[] cipherText,String privateKeyInPem) throws Exception {
+        Cipher cipher = Cipher.getInstance(transformation);
         cipher.init(Cipher.DECRYPT_MODE, loadPrivateKey(privateKeyInPem));
         byte[] output = cipher.doFinal(cipherText);
         return output;
     }
 
-    private static byte[] publicDecryptMini(byte[] cipherText,String publicKeyInPem) throws Exception {
-        Cipher cipher = Cipher.getInstance(RSA);
+    private byte[] publicDecryptMini(byte[] cipherText,String publicKeyInPem) throws Exception {
+        Cipher cipher = Cipher.getInstance(transformation);
         cipher.init(Cipher.DECRYPT_MODE, loadPublicKey(publicKeyInPem));
         byte[] output = cipher.doFinal(cipherText);
         return output;
@@ -98,7 +103,7 @@ public class RSAUtils {
      * @return 密文
      * @throws Exception 加密过程中的异常信息
      */
-    public static byte[] publicEncrypt(byte[] clearText,String publicKeyInPem) throws Exception {
+    public byte[] publicEncrypt(byte[] clearText,String publicKeyInPem) throws Exception {
         ByteArrayOutputStream outputStream=new ByteArrayOutputStream();
 
         byte[] buf=clearText;
@@ -125,7 +130,7 @@ public class RSAUtils {
      * @return 密文
      * @throws Exception 加密过程中的异常信息
      */
-    public static byte[] privateEncrypt(byte[] clearText,String privateKeyInPem) throws Exception {
+    public byte[] privateEncrypt(byte[] clearText,String privateKeyInPem) throws Exception {
         ByteArrayOutputStream outputStream=new ByteArrayOutputStream();
 
         byte[] buf=clearText;
@@ -152,7 +157,7 @@ public class RSAUtils {
      * @return 明文
      * @throws Exception 解密过程中的异常信息
      */
-    public static byte[] privateDecrypt(byte[] cipherText,String privateKeyInPem) throws Exception {
+    public byte[] privateDecrypt(byte[] cipherText,String privateKeyInPem) throws Exception {
         byte[] buf=cipherText;
         ByteArrayInputStream inputStream=new ByteArrayInputStream(buf);
         ByteArrayOutputStream outputStream=new ByteArrayOutputStream();
@@ -179,7 +184,7 @@ public class RSAUtils {
      * @return 明文
      * @throws Exception 解密过程中的异常信息
      */
-    public static byte[] publicDecrypt(byte[] cipherText,String publicKeyInPem) throws Exception {
+    public byte[] publicDecrypt(byte[] cipherText,String publicKeyInPem) throws Exception {
         byte[] buf=cipherText;
         ByteArrayInputStream inputStream=new ByteArrayInputStream(buf);
         ByteArrayOutputStream outputStream=new ByteArrayOutputStream();
