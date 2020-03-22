@@ -9,6 +9,9 @@ import com.qzero.exchange.core.io.crypto.utils.RSAUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 进行RSA操作的加密模块
+ */
 public class RSAModule implements IQExchangeCryptoModule {
 
     public static final String PARAMETER_REMOTE_PUBLIC_KEY="remotePublicKey";
@@ -84,7 +87,7 @@ public class RSAModule implements IQExchangeCryptoModule {
                 remotePublicKey=new String(parameter);
                 break;
             case PARAMETER_REMOTE_CA:
-                CAEntity caEntity=CAUtils.bytesToCAEntity(parameter);
+                CAEntity caEntity= CAUtils.bytesToCAEntity(parameter);
                 if(!CAUtils.verifyCA(caEntity,remoteIdentity,remotePublicKey))
                     throw new IllegalArgumentException("Illegal CA");
                 else

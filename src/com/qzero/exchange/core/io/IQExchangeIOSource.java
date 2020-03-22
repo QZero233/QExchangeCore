@@ -3,42 +3,41 @@ package com.qzero.exchange.core.io;
 public interface IQExchangeIOSource {
 
     /**
-     * The status of the source
+     * IO源的状态
      */
     enum IOSourceStatus{
         /**
-         * Which means it allow you to write and read
+         * 表示当前源开放，可以进行读写
          */
         STATUS_OPEN,
         /**
-         * Which means read and write is disabled
+         * 表示当前源异常，不能进行读写
          */
         STATUS_CLOSED
     }
 
     /**
-     * Read a datagram from source
-     * @return The datagram,if read failed,it'll return null
+     * 初始化源
+     * @return 是否成功
+     */
+    boolean initSource();
+
+    /**
+     * 从源中读一个数据包
+     * @return 读到的数据包，失败返回null
      */
     Datagram readDatagram();
 
     /**
-     * Write a datagram into source
-     * @param datagram The datagram you want to write
-     * @return Whether wrote successfully or not
+     * 向源中写入一个数据包
+     * @param datagram 即将写入的数据包
+     * @return 写入是否成功
      */
     boolean writeDatagram(Datagram datagram);
 
     /**
-     * Get the status of the source
-     * @return The status of the source
+     * 获取当前源的状态
+     * @return 当前源的状态，以枚举形式返回
      */
     IOSourceStatus getSourceStatus();
-
-    /**
-     * Init source
-     * @return
-     */
-    boolean initSource();
-
 }

@@ -1,22 +1,25 @@
 package com.qzero.exchange.core.coder;
 
+import com.qzero.exchange.core.PackedObject;
+
 /**
- * An interface for class which can encode object into bin data or decode bin data into object
+ * 一个将PackedObject序列化以及反序列化的接口
  */
 public interface IQExchangeCoder {
 
     /**
-     * Decode a bin data into object
-     * @param in The bin data
-     * @return The object,if action failed,it'll return null
+     * 反序列化对象
+     * @param in 序列化的数据
+     * @return 反序列化后的对象，如果失败会返回null
      */
-    Object decode(byte[] in);
+     PackedObject decode(byte[] in);
 
     /**
-     * Encode an object into bin data
-     * @param bean The object
-     * @return The bin data,if failed,it'll return null
+     * 序列化对象
+     * @param packedObject 需要序列化的对象
+     * @return 序列化后的数据，如果失败返回null
      */
-    byte[] encode(Object bean);
+    byte[] encode(PackedObject packedObject);
+
 
 }

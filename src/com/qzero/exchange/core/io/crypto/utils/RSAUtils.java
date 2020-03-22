@@ -20,7 +20,7 @@ public class RSAUtils {
     public static final int CLEAR_MAX_SIZE = (KEY_SIZE/8)-11;
     public static final int CIPHER_MAX_SIZE = 256;
 
-    private static final Logger log=Logger.getLogger(RSAUtils.class);
+    private static final Logger log= Logger.getLogger(RSAUtils.class);
 
     public static PublicKey loadPublicKey(String publicKeyInPem){
         try {

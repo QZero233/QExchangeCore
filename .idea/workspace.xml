@@ -2,11 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6845c147-55e6-415a-9a0f-2d8345ad9b1a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/test/MessageLoopTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/PackedObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/loop/GlobalMessageLoopContainer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/loop/MessageLoop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/utils/StreamUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/loop/GlobalMessageLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/loop/GlobalMessageLoop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/QExchangeHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/QExchangeHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/coder/GlobalClassLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/GlobalClassLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/coder/IQExchangeCoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/coder/IQExchangeCoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/coder/JSONCoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/coder/JSONCoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/Datagram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/Datagram.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/IQExchangeIOSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/IQExchangeIOSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/TCPIOSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/TCPIOSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/CryptoParameter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/CryptoParameter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/IQExchangeCryptoModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/IQExchangeCryptoModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/IncompleteCryptoParameterException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/impl/NoneModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/impl/NoneModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/impl/RSAModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/impl/RSAModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/impl/ca/CAUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/impl/ca/CAUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/utils/AESUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/utils/EncodingUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/utils/RSAUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/utils/RSAUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/loop/GlobalMessageLoop.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/loop/IQExchangeListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/loop/IQExchangeListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/loop/QExchangeListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/loop/QExchangeListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/test/IOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/test/IOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/test/MessageLoopTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/qzero/exchange/core/test/MessageLoopTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,15 +78,21 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/utils" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/qzero/exchange/core/loop" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.qzero.exchange.core.utils" />
+      <recent name="com.qzero.exchange.core.loop" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="H:\JavaWork\QExchangeCore\src\com\qzero\exchange\core\loop" />
+      <recent name="H:\JavaWork\QExchangeCore\src\com\qzero\exchange\core\io\crypto\impl\ca" />
+      <recent name="H:\JavaWork\QExchangeCore\src\com\qzero\exchange\core\io\crypto\impl" />
       <recent name="H:\JavaWork\QExchangeCore\src\com\qzero\exchange\core\io\crypto\utils" />
-      <recent name="H:\JavaWork\QExchangeCore\libs" />
-      <recent name="H:\JavaWork\QExchangeCore\src" />
+      <recent name="H:\JavaWork\QExchangeCore\src\com\qzero\exchange\core\io\crypto" />
     </key>
   </component>
   <component name="RunManager" selected="JUnit.MessageLoopTest.testMessageLoopWithTCP">
@@ -191,7 +219,8 @@
       <workItem from="1579531014606" duration="14000" />
       <workItem from="1579534406350" duration="4271000" />
       <workItem from="1579583864232" duration="4257000" />
-      <workItem from="1579592234696" duration="3845000" />
+      <workItem from="1579592234696" duration="4002000" />
+      <workItem from="1584857475323" duration="5253000" />
     </task>
     <task id="LOCAL-00001" summary="&lt;Init&gt;Init work">
       <created>1579442354991</created>
@@ -221,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579593080693</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="&lt;Feat&gt;MessageLoopSystem">
+      <created>1579596104961</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1579596104961</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,25 +267,28 @@
     <MESSAGE value="&lt;Init&gt;Init work" />
     <MESSAGE value="&lt;Feat&gt;CA Supported" />
     <MESSAGE value="&lt;Feat&gt;GlobalClassLoader" />
-    <option name="LAST_COMMIT_MESSAGE" value="&lt;Feat&gt;GlobalClassLoader" />
+    <MESSAGE value="&lt;Feat&gt;MessageLoopSystem" />
+    <option name="LAST_COMMIT_MESSAGE" value="&lt;Feat&gt;MessageLoopSystem" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="864" y="359" key="#com.intellij.ide.util.MemberChooser" timestamp="1579595790520">
+    <state x="864" y="359" key="#com.intellij.ide.util.MemberChooser" timestamp="1584857899440">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="864" y="359" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584857899440" />
     <state x="864" y="359" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1579595790520" />
     <state x="714" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1579516246250">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="714" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579516246250" />
-    <state x="690" y="269" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1579589188662">
+    <state x="690" y="269" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584857770481">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="690" y="269" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584857770481" />
     <state x="690" y="269" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579589188662" />
-    <state x="570" y="117" key="CommitChangelistDialog2" timestamp="1579593079104">
+    <state x="570" y="117" key="CommitChangelistDialog2" timestamp="1579596103953">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="570" y="117" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1579593079104" />
+    <state x="570" y="117" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1579596103953" />
     <state width="571" height="466" key="DebuggerActiveHint" timestamp="1579588359571">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -258,22 +297,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="264" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1579357908989" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1579596086300">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1579596242641">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579596086300" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1579596086300">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579596242641" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1579596242641">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579596086300" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1579596086300">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579596242641" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1579596242640">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579596086300" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1579596086300">
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579596242640" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1579596242641">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579596086300" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579596242641" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1579590210562">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -290,10 +329,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579590210562" />
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1579593083879">
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1579596109116">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1579593083879" />
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1579596109116" />
     <state x="658" y="421" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1579399828450">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -302,6 +341,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="657" y="322" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579357976098" />
+    <state x="334" y="136" key="new project wizard" timestamp="1579596164089">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="334" y="136" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1579596164089" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1584861310343">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584861310343" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/QExchangeCore$IOTest_testIO.ic" NAME="IOTest.testIO Coverage Results" MODIFIED="1579443930654" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

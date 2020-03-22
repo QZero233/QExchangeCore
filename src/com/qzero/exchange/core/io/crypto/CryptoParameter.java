@@ -4,10 +4,19 @@ import com.alibaba.fastjson.annotation.JSONField;
 
 import java.util.Arrays;
 
+/**
+ * 加密参数
+ */
 public class CryptoParameter {
 
+    /**
+     * 参数名称
+     */
     @JSONField(name = "name")
     private String name;
+    /**
+     * 参数具体内容
+     */
     @JSONField(name = "parameter")
     private byte[] parameter;
 
