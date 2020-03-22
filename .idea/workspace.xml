@@ -2,46 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6845c147-55e6-415a-9a0f-2d8345ad9b1a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/RunTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/fastjson_1_2_9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/fastjson_1_2_9.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/log4j_1_2_17.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileChanges/last-build.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileContent/fileContent.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/5.2.1/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/RunTest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/test/css/base-style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/test/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/test/js/report.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/default-package.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/test-results/test/TEST-RunTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/QExchangeCore/log4j.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QExchangeCore.iml" beforeDir="false" afterPath="$PROJECT_DIR$/QExchangeCore.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/GlobalClassLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/GlobalClassLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/PackedObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/PackedObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/QExchangeHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/QExchangeHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/coder/IQExchangeCoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/coder/IQExchangeCoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/coder/JSONCoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/coder/JSONCoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/Datagram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/io/Datagram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/IQExchangeIOSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/io/IQExchangeIOSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/TCPIOSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/io/TCPIOSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/CryptoParameter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/io/crypto/CryptoParameter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/IQExchangeCryptoModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/io/crypto/IQExchangeCryptoModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/impl/NoneModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/io/crypto/impl/NoneModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/impl/RSAModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/io/crypto/impl/RSAModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/impl/ca/CAEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/io/crypto/impl/ca/CAEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/impl/ca/CAUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/io/crypto/impl/ca/CAUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/utils/RSAKeySet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/io/crypto/utils/RSAKeySet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/utils/RSAUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/io/crypto/utils/RSAUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/io/crypto/utils/SHA256Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/io/crypto/utils/SHA256Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/loop/GlobalMessageLoopContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/loop/GlobalMessageLoopContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/loop/IQExchangeListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/loop/IQExchangeListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/loop/MessageLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/loop/MessageLoop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/loop/QExchangeListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/loop/QExchangeListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/test/IOTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/test/MessageLoopTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/test/RSAUtilsTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/test/TestCryptoModule.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qzero/exchange/core/utils/StreamUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/utils/StreamUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,7 +189,7 @@
       <workItem from="1584864033700" duration="2000" />
       <workItem from="1584864055292" duration="63000" />
       <workItem from="1584864120411" duration="1000" />
-      <workItem from="1584864141815" duration="969000" />
+      <workItem from="1584864141815" duration="1678000" />
     </task>
     <task id="LOCAL-00001" summary="&lt;Init&gt;Init work">
       <created>1579442354991</created>
@@ -244,7 +233,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584862760094</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="gradle支持完成">
+      <created>1584865157233</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1584865157233</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -257,7 +253,8 @@
     <MESSAGE value="&lt;Feat&gt;GlobalClassLoader" />
     <MESSAGE value="&lt;Feat&gt;MessageLoopSystem" />
     <MESSAGE value="重构了部分代码&#10;增添了注释" />
-    <option name="LAST_COMMIT_MESSAGE" value="重构了部分代码&#10;增添了注释" />
+    <MESSAGE value="gradle支持完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="gradle支持完成" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="181" key="#Project_Structure" timestamp="1584865111519">
@@ -286,10 +283,10 @@
     </state>
     <state x="690" y="269" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584857770481" />
     <state x="690" y="269" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579589188662" />
-    <state x="570" y="117" key="CommitChangelistDialog2" timestamp="1584862757694">
+    <state x="570" y="117" key="CommitChangelistDialog2" timestamp="1584865155395">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="570" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584862757694" />
+    <state x="570" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584865155395" />
     <state x="570" y="117" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1579596103953" />
     <state width="571" height="466" key="DebuggerActiveHint" timestamp="1579588359571">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -340,10 +337,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="463" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584864180588" />
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1584862767665">
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1584865512680">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584862767665" />
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584865512680" />
     <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1579596109116" />
     <state x="658" y="421" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1579399828450">
       <screen x="0" y="0" width="1920" height="1040" />
