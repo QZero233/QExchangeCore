@@ -11,6 +11,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -40,6 +41,7 @@ public class SerializeTest {
         TestBeanB b=new TestBeanB(2,"Ming");
         TestBeanA a=new TestBeanA(UUIDUtils.getRandomUUID(),25,b);
         a.ae= TestBeanA.AE.AE_B;
+        a.is=new int[]{1,2,3,4};
 
         ParameterCoder coder=new ParameterCoder();
         Map map= coder.encodeParameter(a);
@@ -64,5 +66,26 @@ public class SerializeTest {
         log.debug(request);
         log.debug(request.getParameterInObject(TestBeanA.class));
     }
+
+    @Test
+    public void testArray() throws Exception{
+        int[] a={1,2,3};
+        Type[] types=a.getClass().getGenericInterfaces();
+        for(Type type:types){
+            log.debug(type.getTypeName());
+        }
+
+        /*ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
+        ObjectOutputStream outputStream=new ObjectOutputStream(byteArrayOutputStream);
+        outputStream.writeObject(a);
+
+        ByteArrayInputStream byteArrayInputStream=new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
+        ObjectInputStream inputStream=new ObjectInputStream(byteArrayInputStream);
+        a= (int[]) inputStream.readObject();
+        log.debug(Arrays.toString(a));
+        log.debug(Arrays.toString(byteArrayOutputStream.toByteArray()));*/
+
+    }
+
 
 }

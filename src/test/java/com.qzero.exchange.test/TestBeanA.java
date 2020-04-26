@@ -2,7 +2,7 @@ package com.qzero.exchange.test;
 
 import com.qzero.exchange.core.coder.QExchangeParameterField;
 
-import java.io.Serializable;
+import java.util.Arrays;
 
 public class TestBeanA{
 
@@ -25,6 +25,8 @@ public class TestBeanA{
     private TestBeanB b;
     @QExchangeParameterField
     public AE ae;
+    @QExchangeParameterField
+    public int[] is;
 
     public TestBeanA() {
     }
@@ -68,6 +70,7 @@ public class TestBeanA{
                 ", aInt=" + aInt +
                 ", b=" + b +
                 ", ae=" + ae +
+                ", is=" + Arrays.toString(is) +
                 '}';
     }
 }

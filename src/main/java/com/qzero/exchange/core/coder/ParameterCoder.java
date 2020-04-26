@@ -3,7 +3,12 @@ package com.qzero.exchange.core.coder;
 import com.qzero.exchange.core.QExchangeParameter;
 import org.apache.log4j.Logger;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.lang.reflect.Field;
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,6 +19,40 @@ public class ParameterCoder {
 
     private static final Logger log=Logger.getRootLogger();
 
+    private boolean isSerializable(Class clazz){
+        Type[] types=clazz.getGenericInterfaces();
+        for(Type type:types){
+            if(type.getTypeName().equals("java.io.Serializable"))
+                return true;
+        }
+
+        return false;
+    }
+
+    private byte[] objectToByteArray(Object obj){
+        try {
+            ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
+            ObjectOutputStream outputStream=new ObjectOutputStream(byteArrayOutputStream);
+
+            outputStream.writeObject(obj);
+            return byteArrayOutputStream.toByteArray();
+        }catch (Exception e){
+            log.error("可序列化对象的序列化失败",e);
+            return null;
+        }
+    }
+
+    private<T> T byteArrayToSerializableObject(byte[] buf){
+        try {
+            ByteArrayInputStream byteArrayInputStream=new ByteArrayInputStream(buf);
+            ObjectInputStream inputStream=new ObjectInputStream(byteArrayInputStream);
+
+            return (T) inputStream.readObject();
+        }catch (Exception e){
+            log.error("可序列化对象反序列化失败",e);
+            return null;
+        }
+    }
 
     public Map<String, QExchangeParameter> encodeParameter(Object obj){
         if(obj==null)
@@ -33,7 +72,7 @@ public class ParameterCoder {
 
             String name=fieldAnnotation.name();
             if(name==null || name.equals(""))
-                name=clazz+"-"+field.getName();
+                name=field.getName();
 
             Object value;
             try {
@@ -50,10 +89,17 @@ public class ParameterCoder {
 
             QExchangeParameter.ParameterType parameterType=QExchangeParameter.getParameterTypeByObject(value);
             if(parameterType== QExchangeParameter.ParameterType.PARAMETER_TYPE_OBJECT){
-                value=encodeParameter(value);
-                if(value==null){
-                    throw new IllegalArgumentException(String.format("错误，编码对象型参数%s时异常", name));
+
+                //可序列化就序列化成byte[]
+                if(isSerializable(value.getClass())){
+                    value=objectToByteArray(value);
+                }else{
+                    value=encodeParameter(value);
+                    if(value==null){
+                        throw new IllegalArgumentException(String.format("错误，编码对象型参数%s时异常", name));
+                    }
                 }
+
             }
 
             QExchangeParameter parameter;
@@ -92,7 +138,7 @@ public class ParameterCoder {
 
             String name = fieldAnnotation.name();
             if (name == null || name.equals(""))
-                name=clazz+"-"+field.getName();
+                name=field.getName();
 
             QExchangeParameter parameter=parameterMap.get(name);
 
@@ -102,13 +148,21 @@ public class ParameterCoder {
             }
 
             Object value=parameter.getParameterObject();
-            //Object类型的需要再次转换
+
             if(parameter.getParameterType()== QExchangeParameter.ParameterType.PARAMETER_TYPE_OBJECT){
-                value=decodeParameter((Map<String, QExchangeParameter>) value,field.getType());
-                if(value==null){
-                    log.error(String.format("转换参数%s时出错", name));
-                    return null;
+
+                //可序列化就反序列化成对象
+                if(isSerializable(field.getType())){
+                    value=byteArrayToSerializableObject((byte[]) value);
+                }else{
+                    value=decodeParameter((Map<String, QExchangeParameter>) value,field.getType());
+                    if(value==null){
+                        log.error(String.format("转换参数%s时出错", name));
+                        return null;
+                    }
                 }
+
+
             }
 
             try {
