@@ -1,7 +1,6 @@
 package com.qzero.exchange.core.loop;
 
-import com.qzero.exchange.core.GlobalClassLoader;
-import com.qzero.exchange.core.PackedObject;
+import com.qzero.exchange.core.QExchangeAction;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -31,17 +30,23 @@ public class MessageLoop {
 
     /**
      * 注册一个监听器
-     * @param target 对象的名称
      * @param listener 监听器
      * @return 是否成功
      */
-    public boolean registerListener(String target, IQExchangeListener listener) {
-        ListenerSet listenerSet = listeners.get(target);
+    public boolean registerListener(IQExchangeListener listener) {
+        if(listener==null)
+            return false;
+
+        String actionName=listener.getActionName();
+        if(actionName==null || actionName.equals(""))
+            return false;
+
+        ListenerSet listenerSet = listeners.get(actionName);
         if (listenerSet == null)
             listenerSet = new ListenerSet();
 
         if (listenerSet.add(listener)) {
-            listeners.put(target, listenerSet);
+            listeners.put(actionName, listenerSet);
             return true;
         } else
             return false;
@@ -50,17 +55,17 @@ public class MessageLoop {
 
     /**
      * 取消一个监听器
-     * @param target 对象名称
+     * @param actionName 监听的动作名称
      * @param id 监听器ID
      * @param priority 监听器优先级
      * @return
      */
-    public boolean unregisterListener(String target, String id, int priority) {
-        ListenerSet listenerSet = listeners.get(target);
+    public boolean unregisterListener(String actionName, String id, int priority) {
+        ListenerSet listenerSet = listeners.get(actionName);
         if (listenerSet == null)
             return false;
         if (listenerSet.remove(priority, id)) {
-            listeners.put(target, listenerSet);
+            listeners.put(actionName, listenerSet);
             return true;
         } else
             return false;
@@ -81,34 +86,20 @@ public class MessageLoop {
                 QExchangeListener listenerAnnotation = method.getAnnotation(QExchangeListener.class);
                 if (listenerAnnotation != null) {
 
-                    Class[] targetClass = listenerAnnotation.targetsClass();
-                    String[] targetsName = listenerAnnotation.targetsName();
-
-                    if (targetClass.length == 0 && targetsName.length == 0)
+                    String[] actionNameList=listenerAnnotation.actionNameList();
+                    if(actionNameList==null || actionNameList.length==0)
                         continue;
-
-                    Object[] targets;
-                    if (targetsName.length == 0)
-                        targets = targetClass;
-                    else
-                        targets = targetsName;
 
                     int priority = listenerAnnotation.priority();
 
-                    for (Object target : targets) {
-                        String targetName;
-                        if (target instanceof String)
-                            targetName = (String) target;
-                        else
-                            targetName = GlobalClassLoader.getNameByType((Class) target);
-
-                        if (targetName == null)
+                    for (String actionName : actionNameList) {
+                        if(actionName==null)
                             continue;
 
                         IQExchangeListener listener = new IQExchangeListener() {
                             @Override
                             public String getId() {
-                                return method.getName() + "-" + targetName;
+                                return cls.getName()+"-"+method.getName() + "-" + actionName;
                             }
 
                             @Override
@@ -117,17 +108,26 @@ public class MessageLoop {
                             }
 
                             @Override
-                            public boolean onObjectReceived(Object obj) {
+                            public String getActionName() {
+                                return actionName;
+                            }
+
+                            @Override
+                            public QExchangeAction.ActionType getActionType() {
+                                return listenerAnnotation.actionType();
+                            }
+
+                            @Override
+                            public boolean onObjectReceived(QExchangeAction action) {
                                 try {
-                                    return (boolean) method.invoke(instance, obj);
+                                    return (boolean) method.invoke(instance, action);
                                 } catch (Exception e) {
                                     return false;
                                 }
-
                             }
                         };
 
-                        if (!registerListener(targetName, listener))
+                        if (!registerListener(listener))
                             return false;
                     }
                 }
@@ -151,31 +151,20 @@ public class MessageLoop {
                 method.setAccessible(true);
                 QExchangeListener listenerAnnotation = method.getAnnotation(QExchangeListener.class);
                 if (listenerAnnotation != null) {
-                    Class[] targetClass = listenerAnnotation.targetsClass();
-                    String[] targetsName = listenerAnnotation.targetsName();
-
-                    if (targetClass.length == 0 && targetsName.length == 0)
+                    String[] actionNameList=listenerAnnotation.actionNameList();
+                    if(actionNameList==null || actionNameList.length==0)
                         continue;
-
-                    Object[] targets;
-                    if (targetsName.length == 0)
-                        targets = targetClass;
-                    else
-                        targets = targetsName;
 
                     int priority = listenerAnnotation.priority();
 
-                    for (Object target : targets) {
-                        String targetName;
-                        if (target instanceof String)
-                            targetName = (String) target;
-                        else
-                            targetName = GlobalClassLoader.getNameByType((Class) target);
 
-                        if (targetName == null)
+                    for (String actionName : actionNameList) {
+                        if (actionName == null)
                             continue;
 
-                        if (!unregisterListener(targetName, method.getName() + "-" + targetName, priority))
+                        String id=cls.getName()+"-"+method.getName() + "-" + actionName;
+
+                        if (!unregisterListener(actionName, id, priority))
                             continue;
                     }
 
@@ -188,21 +177,17 @@ public class MessageLoop {
     }
 
     /**
-     * 接受到对象，调用此方法会调用相应的监听方法
-     * @param packedObject 收到的对象
+     * 接受到操作，调用此方法会调用相应的监听方法
+     * @param action 收到的操作
      * @return 是否成功
      */
-    public boolean onObjectReceived(PackedObject packedObject) {
-        Object obj = packedObject.getObject();
-        String name = packedObject.getName();
-        if (obj == null || name == null)
-            return false;
-
-        ListenerSet listenerSet = listeners.get(name);
+    public boolean onActionReceived(QExchangeAction action) {
+        String actionName=action.getActionName();
+        ListenerSet listenerSet = listeners.get(actionName);
         if (listenerSet == null)
             return false;
 
-        return listenerSet.onReceived(obj);
+        return listenerSet.onReceived(action);
     }
 
 }
@@ -267,16 +252,22 @@ class ListenerSet {
     /**
      * 按照优先级从小到大的顺序调用监听方法
      * 如果有一个监听方法返回false将停止调用接下来的监听器
-     * @param obj 收到的对象
+     * @param action 收到的操作
      * @return 是否成功
      */
-    public boolean onReceived(Object obj){
+    public boolean onReceived(QExchangeAction action){
         for(int i=1;i<=10;i++){
             List<IQExchangeListener> listenerList=listenerMap.get(i);
             if(listenerList!=null){
                 for(IQExchangeListener listener:listenerList){
-                    if(!listener.onObjectReceived(obj))
-                        return false;
+                    QExchangeAction.ActionType type=action.getActionType();
+                    if(listener.getActionType()==null || listener.getActionType().equals(type)){
+                        if(!listener.onObjectReceived(action))
+                            return false;
+                    }else{
+                        continue;
+                    }
+
                 }
             }
         }

@@ -1,5 +1,7 @@
 package com.qzero.exchange.core.loop;
 
+import com.qzero.exchange.core.QExchangeAction;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -13,15 +15,14 @@ import java.lang.annotation.Target;
 public @interface QExchangeListener {
 
     /**
-     * 获取关注对象的类
-     * 如果名称不为空，那么这一项会被忽略
+     * 所关注的操作的名称
      */
-    Class[] targetsClass() default {};
+    String[] actionNameList() default {};
 
     /**
-     * 获取关注对象的名称
+     * 所关注的操作的类型
      */
-    String[] targetsName() default {};
+    QExchangeAction.ActionType actionType();
 
     /**
      * 优先级

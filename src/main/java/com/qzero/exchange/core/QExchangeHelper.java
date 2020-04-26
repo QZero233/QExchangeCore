@@ -1,14 +1,18 @@
 package com.qzero.exchange.core;
 
-import com.qzero.exchange.core.coder.IQExchangeCoder;
-import com.qzero.exchange.core.coder.JSONCoder;
+import com.qzero.exchange.core.coder.ActionSerializer;
 import com.qzero.exchange.core.io.Datagram;
 import com.qzero.exchange.core.io.IQExchangeIOSource;
+import org.apache.log4j.Logger;
+
+import java.io.IOException;
 
 /**
  * 读写对象的一个类
  */
 public class QExchangeHelper {
+
+    private static final Logger log=Logger.getRootLogger();
 
     /**
      * io源
@@ -17,44 +21,41 @@ public class QExchangeHelper {
     /**
      * 序列化器
      */
-    private IQExchangeCoder coder;
+    private ActionSerializer serializer;
 
-    /**
-     * 默认序列化器为JSON序列化器
-     * @param ioSource
-     */
+
     public QExchangeHelper(IQExchangeIOSource ioSource) {
         this.ioSource = ioSource;
-        coder= new JSONCoder();
+        serializer=new ActionSerializer();
     }
-
-    public QExchangeHelper(IQExchangeIOSource ioSource, IQExchangeCoder coder) {
-        this.ioSource = ioSource;
-        this.coder = coder;
-    }
-
 
     /**
-     * 向IO源中写入对象
-     * @param packedObject 待写入的对象
+     * 向IO源中写入一个action
+     * @param action 待写入的action
      * @return 是否成功
      */
-    public boolean writeObject(PackedObject packedObject){
-        if(ioSource==null || ioSource.getSourceStatus()!= IQExchangeIOSource.IOSourceStatus.STATUS_OPEN || packedObject==null || packedObject.getObject()==null)
+    public boolean writeAction(QExchangeAction action){
+        if(ioSource==null || ioSource.getSourceStatus()!= IQExchangeIOSource.IOSourceStatus.STATUS_OPEN || action==null)
             return false;
 
-        byte[] buf=coder.encode(packedObject);
+        byte[] buf;
+        try {
+            buf = serializer.serializeAction(action);
+        } catch (IOException e) {
+            log.error("错误，序列化action失败",e);
+            return false;
+        }
 
-        Datagram datagram=new Datagram(Datagram.ACTION_EXCHANGE_OBJECT,System.currentTimeMillis(),buf);
+        Datagram datagram=new Datagram(Datagram.ACTION_EXCHANGE_ACTION,System.currentTimeMillis(),buf);
         return ioSource.writeDatagram(datagram);
     }
 
 
     /**
-     * 从IO源中读取一个对象
-     * @return 读取到的对象，失败会返回null
+     * 从IO源中读取一个action
+     * @return 读取到的action，失败会返回null
      */
-    public PackedObject readObject(){
+    public QExchangeAction readAction(){
         if(ioSource==null || ioSource.getSourceStatus()!= IQExchangeIOSource.IOSourceStatus.STATUS_OPEN)
             return null;
 
@@ -63,7 +64,12 @@ public class QExchangeHelper {
             return null;
 
         byte[] buf=datagram.getContent();
-        return coder.decode(buf);
+        try {
+            return serializer.deserialize(buf);
+        } catch (Exception e) {
+            log.error("错误，反序列化action失败",e);
+            return null;
+        }
     }
 
 

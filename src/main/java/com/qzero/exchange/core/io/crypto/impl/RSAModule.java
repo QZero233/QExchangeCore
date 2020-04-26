@@ -32,6 +32,10 @@ public class RSAModule implements IQExchangeCryptoModule {
     private RSAUtils rsaUtils;
     private CAUtils caUtils;
 
+    public static RSAModule buildBasicRSAModule(String transformation){
+        return new RSAModule(RSAUtils.genRSAKeySet(),null,null,transformation);
+    }
+
     public RSAModule(RSAKeySet localKeySet, CAEntity localCA, String remoteIdentity,String transformation) {
         this.localKeySet = localKeySet;
         this.localCA = localCA;

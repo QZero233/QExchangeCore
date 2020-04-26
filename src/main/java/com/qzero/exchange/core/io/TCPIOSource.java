@@ -79,7 +79,13 @@ public class TCPIOSource implements IQExchangeIOSource {
      */
     private IQExchangeCryptoModule cryptoModule;
 
-    public TCPIOSource(String remoteIp, int port, IQExchangeCryptoModule cryptoModule) {
+    /**
+     * 客户端用的构造函数
+     * @param remoteIp
+     * @param port
+     * @param cryptoModule
+     */
+    private TCPIOSource(String remoteIp, int port, IQExchangeCryptoModule cryptoModule) {
         this.remoteIp = remoteIp;
         this.port = port;
         this.cryptoModule = cryptoModule;
@@ -87,11 +93,26 @@ public class TCPIOSource implements IQExchangeIOSource {
         initSource();
     }
 
-    public TCPIOSource(boolean isServer, Socket socket, IQExchangeCryptoModule cryptoModule) {
+    /**
+     * 服务端用的构造函数
+     * @param isServer
+     * @param socket
+     * @param cryptoModule
+     */
+    private TCPIOSource(boolean isServer, Socket socket, IQExchangeCryptoModule cryptoModule) {
         this.isServer = isServer;
         this.socket = socket;
         this.cryptoModule = cryptoModule;
         initSource();
+    }
+
+    public static TCPIOSource buildSourceForClient(String remoteIp, int port, IQExchangeCryptoModule cryptoModule){
+        return new TCPIOSource(remoteIp,port,cryptoModule);
+    }
+
+    public static TCPIOSource buildSourceForServer(Socket socket, IQExchangeCryptoModule cryptoModule){
+        return new TCPIOSource(true,socket,cryptoModule);
+
     }
 
     @Override

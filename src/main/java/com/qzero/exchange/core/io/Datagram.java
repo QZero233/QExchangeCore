@@ -9,7 +9,7 @@ public class Datagram {
     /**
      * 表示动作为交换对象
      */
-    public static final String ACTION_EXCHANGE_OBJECT="ObjectExchange";
+    public static final String ACTION_EXCHANGE_ACTION="ActionExchange";
     /**
      * 表示动作为发送加密参数
      */
