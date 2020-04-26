@@ -22,6 +22,7 @@ public class SerializeTest {
     public void testSerialize() throws Exception{
         TestBeanB b=new TestBeanB(2,"Ming");
         TestBeanA a=new TestBeanA(UUIDUtils.getRandomUUID(),25,b);
+        a.ae= TestBeanA.AE.AE_B;
 
         ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
         ObjectOutputStream outputStream=new ObjectOutputStream(byteArrayOutputStream);
@@ -38,6 +39,7 @@ public class SerializeTest {
     public void testCoder(){
         TestBeanB b=new TestBeanB(2,"Ming");
         TestBeanA a=new TestBeanA(UUIDUtils.getRandomUUID(),25,b);
+        a.ae= TestBeanA.AE.AE_B;
 
         ParameterCoder coder=new ParameterCoder();
         Map map= coder.encodeParameter(a);

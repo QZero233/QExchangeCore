@@ -14,6 +14,7 @@ public class ParameterCoder {
 
     private static final Logger log=Logger.getRootLogger();
 
+
     public Map<String, QExchangeParameter> encodeParameter(Object obj){
         if(obj==null)
             return null;
@@ -32,7 +33,7 @@ public class ParameterCoder {
 
             String name=fieldAnnotation.name();
             if(name==null || name.equals(""))
-                name=field.getName();
+                name=clazz+"-"+field.getName();
 
             Object value;
             try {
@@ -91,7 +92,7 @@ public class ParameterCoder {
 
             String name = fieldAnnotation.name();
             if (name == null || name.equals(""))
-                name = field.getName();
+                name=clazz+"-"+field.getName();
 
             QExchangeParameter parameter=parameterMap.get(name);
 

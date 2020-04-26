@@ -49,6 +49,13 @@ public abstract class QExchangeAction implements Serializable {
         this.parameterMap = parameterMap;
     }
 
+    public QExchangeParameter getParameterByName(String name){
+        if(parameterMap==null || parameterMap.isEmpty())
+            return null;
+
+        return parameterMap.get(name);
+    }
+
     public<T> T getParameterInObject(Class<T> clazz){
         ParameterCoder coder=new ParameterCoder();
         return coder.decodeParameter(parameterMap,clazz);

@@ -16,6 +16,7 @@ public class QExchangeParameter implements Serializable {
         PARAMETER_TYPE_FLOAT,
         PARAMETER_TYPE_DOUBLE,
         PARAMETER_TYPE_CHAR,
+        PARAMETER_TYPE_ENUM,
         PARAMETER_TYPE_OBJECT//Object类型的用一个Map封装，用ParameterCoder转化为Map
     }
 
@@ -94,6 +95,8 @@ public class QExchangeParameter implements Serializable {
             return ParameterType.PARAMETER_TYPE_BOOLEAN;
         else if(obj instanceof String)
             return ParameterType.PARAMETER_TYPE_STRING;
+        else if(obj instanceof Enum)
+            return ParameterType.PARAMETER_TYPE_ENUM;
         else
             return ParameterType.PARAMETER_TYPE_OBJECT;
     }
@@ -125,6 +128,8 @@ public class QExchangeParameter implements Serializable {
                 return parameterObject instanceof Boolean;
             case PARAMETER_TYPE_STRING:
                 return parameterObject instanceof String;
+            case PARAMETER_TYPE_ENUM:
+                return parameterObject instanceof Enum;
             case PARAMETER_TYPE_OBJECT:
                 return parameterObject instanceof Map;
             default:

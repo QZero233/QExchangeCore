@@ -12,6 +12,17 @@ public class QExchangeResponse extends QExchangeAction {
 
     private String statusCode;
 
+    /**
+     *
+     * @param actionName
+     * @param isSucceeded 是否成功
+     * @param parameter
+     */
+    public QExchangeResponse(String actionName,boolean isSucceeded,Object parameter) {
+        this(actionName,isSucceeded?STATUS_CODE_SUCCEEDED:STATUS_CODE_FAILED,parameter);
+    }
+
+
     public QExchangeResponse(String actionName,String statusCode,Object parameter) {
         this(actionName,new ParameterCoder().encodeParameter(parameter),statusCode);
     }

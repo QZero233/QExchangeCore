@@ -2,7 +2,9 @@ package com.qzero.exchange.test;
 
 import com.qzero.exchange.core.coder.QExchangeParameterField;
 
-public class TestBeanB {
+import java.io.Serializable;
+
+public class TestBeanB{
 
     @QExchangeParameterField
     private int bId;
