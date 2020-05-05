@@ -89,7 +89,6 @@ public class ParameterCoder {
                 return null;
             }
 
-
             /**
              * List,Map,Enum三种类型需要特别处理
              * 如果是Enum直接报错
@@ -163,9 +162,12 @@ public class ParameterCoder {
 
             QExchangeParameter parameter=parameterMap.get(name);
 
+
             if(parameter==null && !fieldAnnotation.optional()){
                 log.error(String.format("错误，参数%s为必须参数", name));
                 return null;
+            }else if(parameter==null){
+                continue;
             }
 
             Object value=parameter.getParameterObject();
