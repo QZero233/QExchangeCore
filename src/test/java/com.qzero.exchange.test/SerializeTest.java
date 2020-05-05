@@ -56,7 +56,7 @@ public class SerializeTest {
 
         TestBeanB b1=new TestBeanB(21,"Ming1");
         TestBeanB b2=new TestBeanB(22,"Ming2");
-        List<TestBeanB> testBeanBS=new ArrayList<>();
+        List<TestBeanB> testBeanBS=new LinkedList<>();
         testBeanBS.add(b1);
         testBeanBS.add(b2);
 
@@ -71,7 +71,9 @@ public class SerializeTest {
 
         request= (QExchangeRequest) serializer.deserialize(buf);
         log.debug(request);
-        log.debug(request.getParameterInObject(TestBeanA.class));
+
+        TestBeanA a1=request.getParameterInObject(TestBeanA.class);
+        log.debug(a1);
     }
 
     @Test
@@ -106,7 +108,7 @@ public class SerializeTest {
 
     @Test
     public void testSerializeCollection() throws Exception{
-        List<Integer> list=new LinkedList<>();
+        /*List<Integer> list=new LinkedList<>();
         list.add(1);
 
         ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
@@ -117,7 +119,9 @@ public class SerializeTest {
         ByteArrayInputStream byteArrayInputStream=new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
         ObjectInputStream inputStream=new ObjectInputStream(byteArrayInputStream);
         List<Integer> list1= (ArrayList<Integer>) inputStream.readObject();
-        log.debug(list1);
+        log.debug(list1);*/
+        List<Integer> list=new ArrayList<>();
+        log.debug(isSerializable(list.getClass()));
     }
 
 

@@ -96,6 +96,16 @@ public class ParameterCoder {
              */
             if(value instanceof Enum){
                 throw new IllegalArgumentException("不支持序列化枚举");
+            } else if(value instanceof List){
+                /**
+                 * 如果是个List就强制变为ArrayList
+                 */
+                value=new ArrayList((List)value);
+            }else if(value instanceof Map){
+                /**
+                 * 如果是个Map就强制变为HashMap
+                 */
+                value=new HashMap((Map) value);
             }
 
             QExchangeParameter.ParameterType parameterType=QExchangeParameter.getParameterTypeByObject(value);

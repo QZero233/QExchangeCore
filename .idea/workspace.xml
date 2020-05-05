@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6845c147-55e6-415a-9a0f-2d8345ad9b1a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/coder/ParameterCoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/coder/ParameterCoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/coder/QExchangeParameterField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/coder/QExchangeParameterField.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com.qzero.exchange.test/SerializeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com.qzero.exchange.test/SerializeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com.qzero.exchange.test/TestBeanA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com.qzero.exchange.test/TestBeanA.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -266,7 +263,9 @@
       <workItem from="1587883437589" duration="188000" />
       <workItem from="1587883777452" duration="437000" />
       <workItem from="1587884495855" duration="1643000" />
-      <workItem from="1588659923702" duration="2365000" />
+      <workItem from="1588659923702" duration="2526000" />
+      <workItem from="1588663643944" duration="75000" />
+      <workItem from="1588664246004" duration="213000" />
     </task>
     <task id="LOCAL-00001" summary="&lt;Init&gt;Init work">
       <created>1579442354991</created>
@@ -366,7 +365,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587886050120</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="1.不支持enum，遇到就抛出异常&#10;2.默认都是optional&#10;3.collection,map等序列化异常修复">
+      <created>1588662772438</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1588662772438</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -387,7 +393,8 @@
     <MESSAGE value="action更新完成" />
     <MESSAGE value="几个小修改" />
     <MESSAGE value="更新了对象类型参数的序列化方式" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新了对象类型参数的序列化方式" />
+    <MESSAGE value="1.不支持enum，遇到就抛出异常&#10;2.默认都是optional&#10;3.collection,map等序列化异常修复" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.不支持enum，遇到就抛出异常&#10;2.默认都是optional&#10;3.collection,map等序列化异常修复" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="181" key="#Project_Structure" timestamp="1584887252613">
@@ -423,10 +430,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="277" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584887213637" />
-    <state x="647" y="157" key="CommitChangelistDialog2" timestamp="1587886048792">
+    <state x="647" y="157" key="CommitChangelistDialog2" timestamp="1588662770098">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="647" y="157" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886048792" />
+    <state x="647" y="157" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588662770098" />
     <state width="571" height="466" key="DebuggerActiveHint" timestamp="1587885834169">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -435,30 +443,31 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="235" y="86" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584887832170" />
-    <state x="740" y="264" key="FileChooserDialogImpl" timestamp="1587886139412">
+    <state x="740" y="264" key="FileChooserDialogImpl" timestamp="1588663718296">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="264" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886139412" />
-    <state width="1877" height="297" key="GridCell.Tab.0.bottom" timestamp="1588662733113">
+    <state x="740" y="264" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1588663718296" />
+    <state width="1877" height="297" key="GridCell.Tab.0.bottom" timestamp="1588664398195">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886140204" />
-    <state width="1877" height="297" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588662733113" />
-    <state width="1877" height="297" key="GridCell.Tab.0.center" timestamp="1588662733113">
+    <state width="1877" height="297" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588664398195" />
+    <state width="1877" height="297" key="GridCell.Tab.0.center" timestamp="1588664398195">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886140204" />
-    <state width="1877" height="297" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588662733113" />
-    <state width="1877" height="297" key="GridCell.Tab.0.left" timestamp="1588662733113">
+    <state width="1877" height="297" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588664398195" />
+    <state width="1877" height="297" key="GridCell.Tab.0.left" timestamp="1588664398195">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886140203" />
-    <state width="1877" height="297" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588662733113" />
-    <state width="1877" height="297" key="GridCell.Tab.0.right" timestamp="1588662733113">
+    <state width="1877" height="297" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588664398195" />
+    <state width="1877" height="297" key="GridCell.Tab.0.right" timestamp="1588664398195">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886140204" />
-    <state width="1877" height="297" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588662733113" />
+    <state width="1877" height="297" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588664398195" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1587886140204">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -479,10 +488,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="463" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584887325963" />
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1587886067499">
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1588662777936">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886067499" />
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588662777936" />
     <state x="719" y="456" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1584887212689">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -495,6 +505,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584861310343" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com.qzero.exchange.test/SerializeTest.java</url>
+          <line>75</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/QExchangeCore$IOTest_testIO.ic" NAME="IOTest.testIO Coverage Results" MODIFIED="1579443930654" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
