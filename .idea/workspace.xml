@@ -3,11 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6845c147-55e6-415a-9a0f-2d8345ad9b1a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/QExchangeParameter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/QExchangeParameter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/coder/ParameterCoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/coder/ParameterCoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/coder/QExchangeParameterField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/coder/QExchangeParameterField.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com.qzero.exchange.test/SerializeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com.qzero.exchange.test/SerializeTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com.qzero.exchange.test/TestBeanA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com.qzero.exchange.test/TestBeanA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com.qzero.exchange.test/TestBeanB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com.qzero.exchange.test/TestBeanB.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,8 +101,8 @@
       <recent name="H:\JavaWork\QExchangeCore\src\com\qzero\exchange\core\io\crypto\impl\ca" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SerializeTest.testCoder">
-    <configuration name="ActionUpdateTest.client" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.SerializeTest.testActionSerializer">
+    <configuration name="SerializeTest.testActionSerializer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="QExchangeCore.test" />
       <useClassPathOnly />
       <extension name="coverage">
@@ -112,26 +112,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.qzero.exchange.test" />
-      <option name="MAIN_CLASS_NAME" value="com.qzero.exchange.test.ActionUpdateTest" />
-      <option name="METHOD_NAME" value="client" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="PARAMETERS" value="" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ActionUpdateTest.server" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="QExchangeCore.test" />
-      <useClassPathOnly />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.qzero.exchange.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.qzero.exchange.test" />
-      <option name="MAIN_CLASS_NAME" value="com.qzero.exchange.test.ActionUpdateTest" />
-      <option name="METHOD_NAME" value="server" />
+      <option name="MAIN_CLASS_NAME" value="com.qzero.exchange.test.SerializeTest" />
+      <option name="METHOD_NAME" value="testActionSerializer" />
       <option name="TEST_OBJECT" value="method" />
       <option name="PARAMETERS" value="" />
       <method v="2">
@@ -192,6 +174,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SerializeTest.testSerializeCollection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="QExchangeCore.test" />
+      <useClassPathOnly />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.qzero.exchange.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.qzero.exchange.test" />
+      <option name="MAIN_CLASS_NAME" value="com.qzero.exchange.test.SerializeTest" />
+      <option name="METHOD_NAME" value="testSerializeCollection" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <useClassPathOnly />
       <option name="PACKAGE_NAME" value="com.qzero.exchange.test" />
@@ -205,11 +205,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SerializeTest.testActionSerializer" />
+        <item itemvalue="JUnit.SerializeTest.testSerializeCollection" />
         <item itemvalue="JUnit.SerializeTest.testCoder" />
         <item itemvalue="JUnit.SerializeTest.testArray" />
         <item itemvalue="JUnit.SerializeTest.testSerialize" />
-        <item itemvalue="JUnit.ActionUpdateTest.client" />
-        <item itemvalue="JUnit.ActionUpdateTest.server" />
       </list>
     </recent_temporary>
   </component>
@@ -265,7 +265,8 @@
       <workItem from="1587882881622" duration="451000" />
       <workItem from="1587883437589" duration="188000" />
       <workItem from="1587883777452" duration="437000" />
-      <workItem from="1587884495855" duration="1508000" />
+      <workItem from="1587884495855" duration="1643000" />
+      <workItem from="1588659923702" duration="2365000" />
     </task>
     <task id="LOCAL-00001" summary="&lt;Init&gt;Init work">
       <created>1579442354991</created>
@@ -358,7 +359,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587884043479</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="更新了对象类型参数的序列化方式">
+      <created>1587886050120</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1587886050120</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -378,7 +386,8 @@
     <MESSAGE value="修复一个初始化阶段的bug" />
     <MESSAGE value="action更新完成" />
     <MESSAGE value="几个小修改" />
-    <option name="LAST_COMMIT_MESSAGE" value="几个小修改" />
+    <MESSAGE value="更新了对象类型参数的序列化方式" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新了对象类型参数的序列化方式" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="181" key="#Project_Structure" timestamp="1584887252613">
@@ -393,11 +402,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="482" y="249" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584887269708" />
-    <state x="864" y="359" key="#com.intellij.ide.util.MemberChooser" timestamp="1587884884395">
+    <state x="864" y="359" key="#com.intellij.ide.util.MemberChooser" timestamp="1588662712970">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="864" y="359" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587884884395" />
-    <state x="864" y="359" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1579595790520" />
+    <state x="864" y="359" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588662712970" />
     <state x="689" y="309" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1584886776524">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -406,101 +415,82 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="582" y="201" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584863066899" />
-    <state x="714" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1579516246250">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="714" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579516246250" />
     <state x="690" y="269" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587649620794">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="269" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587649620794" />
-    <state x="690" y="269" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579589188662" />
     <state x="690" y="277" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog" timestamp="1584887213637">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="277" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584887213637" />
-    <state x="647" y="157" key="CommitChangelistDialog2" timestamp="1587884041252">
+    <state x="647" y="157" key="CommitChangelistDialog2" timestamp="1587886048792">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="647" y="157" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587884041252" />
-    <state x="570" y="117" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1579596103953" />
+    <state x="647" y="157" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886048792" />
     <state width="571" height="466" key="DebuggerActiveHint" timestamp="1587885834169">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="571" height="466" key="DebuggerActiveHint/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587885834169" />
-    <state width="571" height="466" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1579588359571" />
     <state x="235" y="86" key="DiffContextDialog" timestamp="1584887832170">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="235" y="86" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584887832170" />
-    <state x="740" y="264" key="FileChooserDialogImpl" timestamp="1587884214786">
+    <state x="740" y="264" key="FileChooserDialogImpl" timestamp="1587886139412">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="264" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587884214786" />
-    <state x="740" y="264" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1579357908989" />
-    <state width="1877" height="297" key="GridCell.Tab.0.bottom" timestamp="1587885985549">
+    <state x="740" y="264" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886139412" />
+    <state width="1877" height="297" key="GridCell.Tab.0.bottom" timestamp="1588662733113">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="297" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587885985549" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579596242641" />
-    <state width="1877" height="297" key="GridCell.Tab.0.center" timestamp="1587885985549">
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886140204" />
+    <state width="1877" height="297" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588662733113" />
+    <state width="1877" height="297" key="GridCell.Tab.0.center" timestamp="1588662733113">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="297" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587885985549" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579596242641" />
-    <state width="1877" height="297" key="GridCell.Tab.0.left" timestamp="1587885985548">
+    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886140204" />
+    <state width="1877" height="297" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588662733113" />
+    <state width="1877" height="297" key="GridCell.Tab.0.left" timestamp="1588662733113">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="297" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587885985548" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579596242640" />
-    <state width="1877" height="297" key="GridCell.Tab.0.right" timestamp="1587885985549">
+    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886140203" />
+    <state width="1877" height="297" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588662733113" />
+    <state width="1877" height="297" key="GridCell.Tab.0.right" timestamp="1588662733113">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="297" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587885985549" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579596242641" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1587885860868">
+    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886140204" />
+    <state width="1877" height="297" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588662733113" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1587886140204">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587885860868" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579590210562" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1587885860868">
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886140204" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1587886140204">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587885860868" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579590210562" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1587885860868">
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886140204" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1587886140204">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587885860868" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579590210562" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1587885860868">
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886140204" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1587886140204">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587885860868" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579590210562" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886140204" />
     <state x="463" y="165" key="SettingsEditor" timestamp="1584887325963">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="463" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584887325963" />
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1587884050254">
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1587886067499">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587884050254" />
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1579596109116" />
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886067499" />
     <state x="719" y="456" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1584887212689">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="719" y="456" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584887212689" />
-    <state x="658" y="421" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040@0.0.1920.1040" timestamp="1579399828450" />
-    <state x="657" y="322" key="git4idea.merge.GitPullDialog" timestamp="1579357976098">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="657" y="322" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579357976098" />
     <state x="334" y="136" key="new project wizard" timestamp="1584865109383">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="334" y="136" key="new project wizard/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584865109383" />
-    <state x="334" y="136" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1579596164089" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1584861310343">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

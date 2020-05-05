@@ -10,5 +10,5 @@ import java.lang.annotation.Target;
 public @interface QExchangeParameterField {
     boolean enabled() default true;
     String name() default "";
-    boolean optional() default false;
+    boolean optional() default true;
 }

@@ -3,6 +3,7 @@ package com.qzero.exchange.test;
 import com.qzero.exchange.core.coder.QExchangeParameterField;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class TestBeanA{
 
@@ -27,6 +28,8 @@ public class TestBeanA{
     public AE ae;
     @QExchangeParameterField
     public int[] is;
+    @QExchangeParameterField
+    public List<TestBeanB> list;
 
     public TestBeanA() {
     }
@@ -71,6 +74,7 @@ public class TestBeanA{
                 ", b=" + b +
                 ", ae=" + ae +
                 ", is=" + Arrays.toString(is) +
+                ", list=" + list +
                 '}';
     }
 }

@@ -9,7 +9,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -87,6 +89,15 @@ public class ParameterCoder {
                 return null;
             }
 
+
+            /**
+             * List,Map,Enum三种类型需要特别处理
+             * 如果是Enum直接报错
+             */
+            if(value instanceof Enum){
+                throw new IllegalArgumentException("不支持序列化枚举");
+            }
+
             QExchangeParameter.ParameterType parameterType=QExchangeParameter.getParameterTypeByObject(value);
             if(parameterType== QExchangeParameter.ParameterType.PARAMETER_TYPE_OBJECT){
 
@@ -150,12 +161,15 @@ public class ParameterCoder {
             Object value=parameter.getParameterObject();
 
             if(parameter.getParameterType()== QExchangeParameter.ParameterType.PARAMETER_TYPE_OBJECT){
-
+                Class type=field.getType();
+                /**
+                 * 默认List与Map都是可序列化的
+                 */
                 //可序列化就反序列化成对象
-                if(isSerializable(field.getType())){
+                if(type.equals(List.class) || type.equals(Map.class) || isSerializable(type)){
                     value=byteArrayToSerializableObject((byte[]) value);
                 }else{
-                    value=decodeParameter((Map<String, QExchangeParameter>) value,field.getType());
+                    value=decodeParameter((Map<String, QExchangeParameter>) value,type);
                     if(value==null){
                         log.error(String.format("转换参数%s时出错", name));
                         return null;

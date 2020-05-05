@@ -12,8 +12,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.lang.reflect.Type;
-import java.util.Arrays;
-import java.util.Map;
+import java.util.*;
 
 public class SerializeTest {
 
@@ -54,7 +53,15 @@ public class SerializeTest {
     @Test
     public void testActionSerializer() throws Exception{
         TestBeanB b=new TestBeanB(2,"Ming");
+
+        TestBeanB b1=new TestBeanB(21,"Ming1");
+        TestBeanB b2=new TestBeanB(22,"Ming2");
+        List<TestBeanB> testBeanBS=new ArrayList<>();
+        testBeanBS.add(b1);
+        testBeanBS.add(b2);
+
         TestBeanA a=new TestBeanA(UUIDUtils.getRandomUUID(),25,b);
+        a.list=testBeanBS;
 
         ActionSerializer serializer=new ActionSerializer();
 
@@ -85,6 +92,32 @@ public class SerializeTest {
         log.debug(Arrays.toString(a));
         log.debug(Arrays.toString(byteArrayOutputStream.toByteArray()));*/
 
+    }
+
+    private boolean isSerializable(Class clazz){
+        Type[] types=clazz.getGenericInterfaces();
+        for(Type type:types){
+            if(type.getTypeName().equals("java.io.Serializable"))
+                return true;
+        }
+
+        return false;
+    }
+
+    @Test
+    public void testSerializeCollection() throws Exception{
+        List<Integer> list=new LinkedList<>();
+        list.add(1);
+
+        ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
+        ObjectOutputStream outputStream=new ObjectOutputStream(byteArrayOutputStream);
+
+        outputStream.writeObject(list);
+
+        ByteArrayInputStream byteArrayInputStream=new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
+        ObjectInputStream inputStream=new ObjectInputStream(byteArrayInputStream);
+        List<Integer> list1= (ArrayList<Integer>) inputStream.readObject();
+        log.debug(list1);
     }
 
 
