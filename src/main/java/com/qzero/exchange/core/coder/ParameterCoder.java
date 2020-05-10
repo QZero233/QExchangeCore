@@ -1,5 +1,6 @@
 package com.qzero.exchange.core.coder;
 
+import com.alibaba.fastjson.JSON;
 import com.qzero.exchange.core.QExchangeParameter;
 import org.apache.log4j.Logger;
 
@@ -89,37 +90,10 @@ public class ParameterCoder {
                 return null;
             }
 
-            /**
-             * List,Map,Enum三种类型需要特别处理
-             * 如果是Enum直接报错
-             */
-            if(value instanceof Enum){
-                throw new IllegalArgumentException("不支持序列化枚举");
-            } else if(value instanceof List){
-                /**
-                 * 如果是个List就强制变为ArrayList
-                 */
-                value=new ArrayList((List)value);
-            }else if(value instanceof Map){
-                /**
-                 * 如果是个Map就强制变为HashMap
-                 */
-                value=new HashMap((Map) value);
-            }
 
             QExchangeParameter.ParameterType parameterType=QExchangeParameter.getParameterTypeByObject(value);
             if(parameterType== QExchangeParameter.ParameterType.PARAMETER_TYPE_OBJECT){
-
-                //可序列化就序列化成byte[]
-                if(isSerializable(value.getClass())){
-                    value=objectToByteArray(value);
-                }else{
-                    value=encodeParameter(value);
-                    if(value==null){
-                        throw new IllegalArgumentException(String.format("错误，编码对象型参数%s时异常", name));
-                    }
-                }
-
+                value= JSON.toJSONString(value);
             }
 
             QExchangeParameter parameter;
@@ -173,22 +147,7 @@ public class ParameterCoder {
             Object value=parameter.getParameterObject();
 
             if(parameter.getParameterType()== QExchangeParameter.ParameterType.PARAMETER_TYPE_OBJECT){
-                Class type=field.getType();
-                /**
-                 * 默认List与Map都是可序列化的
-                 */
-                //可序列化就反序列化成对象
-                if(type.equals(List.class) || type.equals(Map.class) || isSerializable(type)){
-                    value=byteArrayToSerializableObject((byte[]) value);
-                }else{
-                    value=decodeParameter((Map<String, QExchangeParameter>) value,type);
-                    if(value==null){
-                        log.error(String.format("转换参数%s时出错", name));
-                        return null;
-                    }
-                }
-
-
+                value=JSON.parseObject((String) value,field.getType());
             }
 
             try {

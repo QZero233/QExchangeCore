@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6845c147-55e6-415a-9a0f-2d8345ad9b1a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com.qzero.exchange.test/TestJSONCoder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com.qzero.exchange.test/TestMessageLoop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/QExchangeParameter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/QExchangeParameter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/coder/ParameterCoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/coder/ParameterCoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/loop/MessageLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/loop/MessageLoop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com.qzero.exchange.test/TestBeanB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com.qzero.exchange.test/TestBeanB.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +47,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="feature-action" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -97,7 +102,7 @@
       <recent name="H:\JavaWork\QExchangeCore\src\com\qzero\exchange\core\io\crypto\impl\ca" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SerializeTest.testActionSerializer">
+  <component name="RunManager" selected="JUnit.TestMessageLoop.testMessageLoop">
     <configuration name="SerializeTest.testActionSerializer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="QExchangeCore.test" />
       <useClassPathOnly />
@@ -110,24 +115,6 @@
       <option name="PACKAGE_NAME" value="com.qzero.exchange.test" />
       <option name="MAIN_CLASS_NAME" value="com.qzero.exchange.test.SerializeTest" />
       <option name="METHOD_NAME" value="testActionSerializer" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="PARAMETERS" value="" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SerializeTest.testArray" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="QExchangeCore.test" />
-      <useClassPathOnly />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.qzero.exchange.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.qzero.exchange.test" />
-      <option name="MAIN_CLASS_NAME" value="com.qzero.exchange.test.SerializeTest" />
-      <option name="METHOD_NAME" value="testArray" />
       <option name="TEST_OBJECT" value="method" />
       <option name="PARAMETERS" value="" />
       <method v="2">
@@ -152,24 +139,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SerializeTest.testSerialize" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="QExchangeCore.test" />
-      <useClassPathOnly />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.qzero.exchange.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.qzero.exchange.test" />
-      <option name="MAIN_CLASS_NAME" value="com.qzero.exchange.test.SerializeTest" />
-      <option name="METHOD_NAME" value="testSerialize" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="PARAMETERS" value="" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="SerializeTest.testSerializeCollection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="QExchangeCore.test" />
       <useClassPathOnly />
@@ -182,6 +151,42 @@
       <option name="PACKAGE_NAME" value="com.qzero.exchange.test" />
       <option name="MAIN_CLASS_NAME" value="com.qzero.exchange.test.SerializeTest" />
       <option name="METHOD_NAME" value="testSerializeCollection" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestJSONCoder.testJsonEncode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="QExchangeCore.test" />
+      <useClassPathOnly />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.qzero.exchange.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.qzero.exchange.test" />
+      <option name="MAIN_CLASS_NAME" value="com.qzero.exchange.test.TestJSONCoder" />
+      <option name="METHOD_NAME" value="testJsonEncode" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestMessageLoop.testMessageLoop" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="QExchangeCore.test" />
+      <useClassPathOnly />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.qzero.exchange.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.qzero.exchange.test" />
+      <option name="MAIN_CLASS_NAME" value="com.qzero.exchange.test.TestMessageLoop" />
+      <option name="METHOD_NAME" value="testMessageLoop" />
       <option name="TEST_OBJECT" value="method" />
       <option name="PARAMETERS" value="" />
       <method v="2">
@@ -201,11 +206,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestMessageLoop.testMessageLoop" />
+        <item itemvalue="JUnit.SerializeTest.testCoder" />
+        <item itemvalue="JUnit.TestJSONCoder.testJsonEncode" />
         <item itemvalue="JUnit.SerializeTest.testActionSerializer" />
         <item itemvalue="JUnit.SerializeTest.testSerializeCollection" />
-        <item itemvalue="JUnit.SerializeTest.testCoder" />
-        <item itemvalue="JUnit.SerializeTest.testArray" />
-        <item itemvalue="JUnit.SerializeTest.testSerialize" />
       </list>
     </recent_temporary>
   </component>
@@ -265,7 +270,8 @@
       <workItem from="1588659923702" duration="2526000" />
       <workItem from="1588663643944" duration="75000" />
       <workItem from="1588664246004" duration="314000" />
-      <workItem from="1588665911305" duration="29000" />
+      <workItem from="1588665911305" duration="191000" />
+      <workItem from="1589075819330" duration="1246000" />
     </task>
     <task id="LOCAL-00001" summary="&lt;Init&gt;Init work">
       <created>1579442354991</created>
@@ -379,7 +385,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588664515226</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="修复了一个空指针错误">
+      <created>1588665951861</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1588665951861</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -402,7 +415,8 @@
     <MESSAGE value="更新了对象类型参数的序列化方式" />
     <MESSAGE value="1.不支持enum，遇到就抛出异常&#10;2.默认都是optional&#10;3.collection,map等序列化异常修复" />
     <MESSAGE value="修复了不支持序列化的List以及Map的序列化问题" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复了不支持序列化的List以及Map的序列化问题" />
+    <MESSAGE value="修复了一个空指针错误" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复了一个空指针错误" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="181" key="#Project_Structure" timestamp="1584887252613">
@@ -438,11 +452,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="277" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584887213637" />
-    <state x="647" y="131" key="CommitChangelistDialog2" timestamp="1588664513805">
+    <state x="647" y="131" key="CommitChangelistDialog2" timestamp="1588665950530">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="647" y="157" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886048792" />
-    <state x="647" y="131" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588664513805" />
+    <state x="647" y="131" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588665950530" />
     <state width="571" height="466" key="DebuggerActiveHint" timestamp="1588664480686">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -452,31 +466,31 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="235" y="86" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584887832170" />
-    <state x="740" y="264" key="FileChooserDialogImpl" timestamp="1588664558586">
+    <state x="740" y="264" key="FileChooserDialogImpl" timestamp="1588666101382">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="264" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886139412" />
-    <state x="740" y="264" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1588664558586" />
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1588664559668">
+    <state x="740" y="264" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1588666101382" />
+    <state width="1877" height="297" key="GridCell.Tab.0.bottom" timestamp="1589077062220">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886140204" />
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588664559668" />
-    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1588664559668">
+    <state width="1877" height="297" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589077062220" />
+    <state width="1877" height="297" key="GridCell.Tab.0.center" timestamp="1589077062220">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886140204" />
-    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588664559668" />
-    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1588664559667">
+    <state width="1877" height="297" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589077062220" />
+    <state width="1877" height="297" key="GridCell.Tab.0.left" timestamp="1589077062220">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886140203" />
-    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588664559667" />
-    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1588664559668">
+    <state width="1877" height="297" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589077062220" />
+    <state width="1877" height="297" key="GridCell.Tab.0.right" timestamp="1589077062220">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886140204" />
-    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588664559668" />
+    <state width="1877" height="297" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589077062220" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1588664559668">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -501,11 +515,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="463" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584887325963" />
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1588664519751">
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1588666036115">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886067499" />
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588664519751" />
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588666036115" />
     <state x="719" y="456" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1584887212689">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

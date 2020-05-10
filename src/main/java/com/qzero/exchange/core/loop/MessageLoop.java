@@ -259,7 +259,10 @@ class ListenerSet {
         for(int i=1;i<=10;i++){
             List<IQExchangeListener> listenerList=listenerMap.get(i);
             if(listenerList!=null){
-                for(IQExchangeListener listener:listenerList){
+
+                ArrayList<IQExchangeListener> listenerListCopy= (ArrayList<IQExchangeListener>) ((ArrayList)listenerList).clone();
+
+                for(IQExchangeListener listener:listenerListCopy){
                     QExchangeAction.ActionType type=action.getActionType();
                     if(listener.getActionType()==null || listener.getActionType().equals(type)){
                         if(!listener.onObjectReceived(action))

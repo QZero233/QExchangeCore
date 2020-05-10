@@ -7,7 +7,6 @@ public class QExchangeParameter implements Serializable {
 
     public enum ParameterType{
         PARAMETER_TYPE_NULL,
-        PARAMETER_TYPE_STRING,
         PARAMETER_TYPE_INT,
         PARAMETER_TYPE_SHORT,
         PARAMETER_TYPE_LONG,
@@ -16,11 +15,9 @@ public class QExchangeParameter implements Serializable {
         PARAMETER_TYPE_FLOAT,
         PARAMETER_TYPE_DOUBLE,
         PARAMETER_TYPE_CHAR,
-        PARAMETER_TYPE_ENUM,
 
         /**
-         * 实现了Serializable的就直接变成byte[]
-         * 没实现Serializable的Object类型的用一个Map封装，用ParameterCoder转化为Map
+         * 非基本数据类型的一律用string
          */
         PARAMETER_TYPE_OBJECT
 
@@ -99,10 +96,6 @@ public class QExchangeParameter implements Serializable {
             return ParameterType.PARAMETER_TYPE_CHAR;
         else if(obj instanceof Boolean)
             return ParameterType.PARAMETER_TYPE_BOOLEAN;
-        else if(obj instanceof String)
-            return ParameterType.PARAMETER_TYPE_STRING;
-        else if(obj instanceof Enum)
-            return ParameterType.PARAMETER_TYPE_ENUM;
         else
             return ParameterType.PARAMETER_TYPE_OBJECT;
     }
@@ -132,12 +125,8 @@ public class QExchangeParameter implements Serializable {
                 return parameterObject instanceof Double;
             case PARAMETER_TYPE_BOOLEAN:
                 return parameterObject instanceof Boolean;
-            case PARAMETER_TYPE_STRING:
-                return parameterObject instanceof String;
-            case PARAMETER_TYPE_ENUM:
-                return parameterObject instanceof Enum;
             case PARAMETER_TYPE_OBJECT:
-                return (parameterObject instanceof Map) | (parameterObject instanceof byte[]);
+                return parameterObject instanceof String;
             default:
                 return false;
         }

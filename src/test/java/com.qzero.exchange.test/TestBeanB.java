@@ -4,7 +4,7 @@ import com.qzero.exchange.core.coder.QExchangeParameterField;
 
 import java.io.Serializable;
 
-public class TestBeanB implements Serializable{
+public class TestBeanB{
 
     @QExchangeParameterField
     private int bId;
