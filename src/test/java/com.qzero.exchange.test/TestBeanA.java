@@ -4,6 +4,7 @@ import com.qzero.exchange.core.coder.QExchangeParameterField;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class TestBeanA{
 
@@ -30,6 +31,8 @@ public class TestBeanA{
     public int[] is;
     @QExchangeParameterField
     public List<TestBeanB> list;
+    @QExchangeParameterField
+    public Map<TestBeanB,TestBeanB> map;
 
     public TestBeanA() {
     }
@@ -75,6 +78,7 @@ public class TestBeanA{
                 ", ae=" + ae +
                 ", is=" + Arrays.toString(is) +
                 ", list=" + list +
+                ", map=" + map +
                 '}';
     }
 }

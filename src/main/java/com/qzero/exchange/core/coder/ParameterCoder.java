@@ -1,6 +1,7 @@
 package com.qzero.exchange.core.coder;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import com.qzero.exchange.core.QExchangeParameter;
 import org.apache.log4j.Logger;
 
@@ -9,6 +10,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -147,7 +149,26 @@ public class ParameterCoder {
             Object value=parameter.getParameterObject();
 
             if(parameter.getParameterType()== QExchangeParameter.ParameterType.PARAMETER_TYPE_OBJECT){
-                value=JSON.parseObject((String) value,field.getType());
+                //list与map需要单独处理，指定TypeReference
+                Class fieldType=field.getType();
+                if(fieldType.equals(List.class)){
+                    Type[] types=getParameterizedTypes(field);
+                    if(types==null || types.length<1){
+                        throw new IllegalArgumentException(String.format("错误，参数%s为list，但是泛型数量少于1个", field.getName()));
+                    }
+
+                    Type type=types[0];
+                    value=parseList((String) value,(Class) type);
+                }else if(fieldType.equals(Map.class)){
+                    Type[] types=getParameterizedTypes(field);
+                    if(types==null || types.length<2){
+                        throw new IllegalArgumentException(String.format("错误，参数%s为list，但是泛型数量少于1个", field.getName()));
+                    }
+
+                    value=parseMap((String)value,(Class)types[0],(Class)types[1]);
+                }else{
+                    value=JSON.parseObject((String) value,field.getType());
+                }
             }
 
             try {
@@ -159,5 +180,25 @@ public class ParameterCoder {
         }
 
         return instance;
+    }
+
+    private Type[] getParameterizedTypes(Field field){
+        Type genericType=field.getGenericType();
+        if(genericType!=null && genericType instanceof ParameterizedType){
+            ParameterizedType parameterizedType= (ParameterizedType) genericType;
+            return parameterizedType.getActualTypeArguments();
+        }else{
+            return null;
+        }
+    }
+
+    private<K,V> Map<K,V> parseMap(String json,Class<K> keyClass,Class<V> valueClass){
+        Map<K,V> result=JSON.parseObject(json,new TypeReference<Map<K,V>>(keyClass,valueClass){});
+        return result;
+    }
+
+    private<T> List<T> parseList(String json,Class<T> cls){
+        List<T> result=JSON.parseObject(json,new TypeReference<List<T>>(cls){});
+        return result;
     }
 }

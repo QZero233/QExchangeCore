@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6845c147-55e6-415a-9a0f-2d8345ad9b1a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com.qzero.exchange.test/TestJSONCoder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com.qzero.exchange.test/TestMessageLoop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/QExchangeParameter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/QExchangeParameter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/coder/ParameterCoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/coder/ParameterCoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/loop/MessageLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qzero/exchange/core/loop/MessageLoop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com.qzero.exchange.test/TestBeanB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com.qzero.exchange.test/TestBeanB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com.qzero.exchange.test/SerializeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com.qzero.exchange.test/SerializeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com.qzero.exchange.test/TestBeanA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com.qzero.exchange.test/TestBeanA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com.qzero.exchange.test/TestJSONCoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com.qzero.exchange.test/TestJSONCoder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +100,7 @@
       <recent name="H:\JavaWork\QExchangeCore\src\com\qzero\exchange\core\io\crypto\impl\ca" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestMessageLoop.testMessageLoop">
+  <component name="RunManager" selected="JUnit.SerializeTest.testCoder">
     <configuration name="SerializeTest.testActionSerializer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="QExchangeCore.test" />
       <useClassPathOnly />
@@ -139,24 +137,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SerializeTest.testSerializeCollection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="QExchangeCore.test" />
-      <useClassPathOnly />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.qzero.exchange.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.qzero.exchange.test" />
-      <option name="MAIN_CLASS_NAME" value="com.qzero.exchange.test.SerializeTest" />
-      <option name="METHOD_NAME" value="testSerializeCollection" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="PARAMETERS" value="" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="TestJSONCoder.testJsonEncode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="QExchangeCore.test" />
       <useClassPathOnly />
@@ -169,6 +149,24 @@
       <option name="PACKAGE_NAME" value="com.qzero.exchange.test" />
       <option name="MAIN_CLASS_NAME" value="com.qzero.exchange.test.TestJSONCoder" />
       <option name="METHOD_NAME" value="testJsonEncode" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestJSONCoder.testParameterizedType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="QExchangeCore.test" />
+      <useClassPathOnly />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.qzero.exchange.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.qzero.exchange.test" />
+      <option name="MAIN_CLASS_NAME" value="com.qzero.exchange.test.TestJSONCoder" />
+      <option name="METHOD_NAME" value="testParameterizedType" />
       <option name="TEST_OBJECT" value="method" />
       <option name="PARAMETERS" value="" />
       <method v="2">
@@ -206,11 +204,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestMessageLoop.testMessageLoop" />
         <item itemvalue="JUnit.SerializeTest.testCoder" />
         <item itemvalue="JUnit.TestJSONCoder.testJsonEncode" />
+        <item itemvalue="JUnit.TestJSONCoder.testParameterizedType" />
+        <item itemvalue="JUnit.TestMessageLoop.testMessageLoop" />
         <item itemvalue="JUnit.SerializeTest.testActionSerializer" />
-        <item itemvalue="JUnit.SerializeTest.testSerializeCollection" />
       </list>
     </recent_temporary>
   </component>
@@ -271,7 +269,8 @@
       <workItem from="1588663643944" duration="75000" />
       <workItem from="1588664246004" duration="314000" />
       <workItem from="1588665911305" duration="191000" />
-      <workItem from="1589075819330" duration="1246000" />
+      <workItem from="1589075819330" duration="1415000" />
+      <workItem from="1589078141796" duration="2026000" />
     </task>
     <task id="LOCAL-00001" summary="&lt;Init&gt;Init work">
       <created>1579442354991</created>
@@ -392,7 +391,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588665951861</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="1.修复MessageLoop在调用时卸载报错的问题&#10;2.序列化参数改用json">
+      <created>1589077085127</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1589077085127</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -416,7 +422,8 @@
     <MESSAGE value="1.不支持enum，遇到就抛出异常&#10;2.默认都是optional&#10;3.collection,map等序列化异常修复" />
     <MESSAGE value="修复了不支持序列化的List以及Map的序列化问题" />
     <MESSAGE value="修复了一个空指针错误" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复了一个空指针错误" />
+    <MESSAGE value="1.修复MessageLoop在调用时卸载报错的问题&#10;2.序列化参数改用json" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.修复MessageLoop在调用时卸载报错的问题&#10;2.序列化参数改用json" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="181" key="#Project_Structure" timestamp="1584887252613">
@@ -431,11 +438,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="482" y="249" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584887269708" />
-    <state x="864" y="359" key="#com.intellij.ide.util.MemberChooser" timestamp="1588662712970">
+    <state x="864" y="359" key="#com.intellij.ide.util.MemberChooser" timestamp="1589080038579">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="864" y="359" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587884884395" />
-    <state x="864" y="359" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588662712970" />
+    <state x="864" y="359" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1589080038579" />
     <state x="689" y="309" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1584886776524">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -452,74 +459,74 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="277" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584887213637" />
-    <state x="647" y="131" key="CommitChangelistDialog2" timestamp="1588665950530">
+    <state x="647" y="131" key="CommitChangelistDialog2" timestamp="1589077082731">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="647" y="157" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886048792" />
-    <state x="647" y="131" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588665950530" />
-    <state width="571" height="466" key="DebuggerActiveHint" timestamp="1588664480686">
+    <state x="647" y="131" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1589077082731" />
+    <state width="571" height="466" key="DebuggerActiveHint" timestamp="1589079640083">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="571" height="466" key="DebuggerActiveHint/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587885834169" />
-    <state width="571" height="466" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1588664480686" />
+    <state width="571" height="466" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1589079640083" />
     <state x="235" y="86" key="DiffContextDialog" timestamp="1584887832170">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="235" y="86" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584887832170" />
-    <state x="740" y="264" key="FileChooserDialogImpl" timestamp="1588666101382">
+    <state x="740" y="264" key="FileChooserDialogImpl" timestamp="1589077235468">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="264" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886139412" />
-    <state x="740" y="264" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1588666101382" />
-    <state width="1877" height="297" key="GridCell.Tab.0.bottom" timestamp="1589077062220">
+    <state x="740" y="264" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1589077235468" />
+    <state width="1877" height="297" key="GridCell.Tab.0.bottom" timestamp="1589080159285">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886140204" />
-    <state width="1877" height="297" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589077062220" />
-    <state width="1877" height="297" key="GridCell.Tab.0.center" timestamp="1589077062220">
+    <state width="1877" height="297" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589080159285" />
+    <state width="1877" height="297" key="GridCell.Tab.0.center" timestamp="1589080159284">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886140204" />
-    <state width="1877" height="297" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589077062220" />
-    <state width="1877" height="297" key="GridCell.Tab.0.left" timestamp="1589077062220">
+    <state width="1877" height="297" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589080159284" />
+    <state width="1877" height="297" key="GridCell.Tab.0.left" timestamp="1589080159284">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886140203" />
-    <state width="1877" height="297" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589077062220" />
-    <state width="1877" height="297" key="GridCell.Tab.0.right" timestamp="1589077062220">
+    <state width="1877" height="297" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589080159284" />
+    <state width="1877" height="297" key="GridCell.Tab.0.right" timestamp="1589080159284">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886140204" />
-    <state width="1877" height="297" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589077062220" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1588664559668">
+    <state width="1877" height="297" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589080159284" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1589079762045">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886140204" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588664559668" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1588664559668">
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589079762045" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1589079762045">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886140204" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588664559668" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1588664559668">
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589079762045" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1589079762045">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886140204" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588664559668" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1588664559668">
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589079762045" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1589079762045">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886140204" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588664559668" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589079762045" />
     <state x="463" y="165" key="SettingsEditor" timestamp="1584887325963">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="463" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584887325963" />
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1588666036115">
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1589077123522">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587886067499" />
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588666036115" />
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1589077123522" />
     <state x="719" y="456" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1584887212689">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -528,10 +535,25 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="334" y="136" key="new project wizard/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584865109383" />
+    <state x="661" y="275" key="refactoring.ChangeSignatureDialog" timestamp="1589079742242">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="661" y="275" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589079742242" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1584861310343">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584861310343" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com.qzero.exchange.test/TestJSONCoder.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/QExchangeCore$IOTest_testIO.ic" NAME="IOTest.testIO Coverage Results" MODIFIED="1579443930654" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

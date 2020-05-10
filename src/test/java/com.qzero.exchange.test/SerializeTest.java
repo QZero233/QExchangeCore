@@ -42,11 +42,23 @@ public class SerializeTest {
         a.ae= TestBeanA.AE.AE_B;
         a.is=new int[]{1,2,3,4};
 
-        ParameterCoder coder=new ParameterCoder();
-        Map map= coder.encodeParameter(a);
-        log.debug(map);
+        TestBeanB b1=new TestBeanB(21,"Ming1");
+        TestBeanB b2=new TestBeanB(22,"Ming2");
+        List<TestBeanB> testBeanBS=new LinkedList<>();
+        testBeanBS.add(b1);
+        testBeanBS.add(b2);
+        a.list=testBeanBS;
 
-        TestBeanA a2=coder.decodeParameter(map,TestBeanA.class);
+        Map<TestBeanB,TestBeanB> map=new HashMap<>();
+        map.put(b1,b2);
+        map.put(b2,b1);
+        a.map=map;
+
+        ParameterCoder coder=new ParameterCoder();
+        Map encoded= coder.encodeParameter(a);
+        log.debug(encoded);
+
+        TestBeanA a2=coder.decodeParameter(encoded,TestBeanA.class);
         log.debug(a2);
     }
 
